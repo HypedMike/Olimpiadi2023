@@ -1,0 +1,21 @@
+.navbar{
+    background-color: white;
+    box-shadow: 0px 0px 5px black;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+    padding: 10px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.buttons a:hover{
+    color: grey;
+}
