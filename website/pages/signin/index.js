@@ -53,7 +53,7 @@ export default function Signin(){
                 <br></br>
                 <br></br>
 
-                Riceverete una mail di conferma entro 48 ore dall'iscrizione
+                Riceverete una mail di conferma entro 48 ore dall&aposiscrizione
 
                 <br></br>
                 <br></br>
