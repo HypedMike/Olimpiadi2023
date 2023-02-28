@@ -1,0 +1,29 @@
+.header{
+  text-align: center;
+  padding: 30px;
+  font-size: 2em;
+  min-height: 90vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.header h2{
+  line-height: 10px;
+}
+
+.header div a{
+  border: solid white 1px;
+  padding: 10px;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.header div a:hover{
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
