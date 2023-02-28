@@ -14,7 +14,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className={styles.body}>
         <header className={styles.header}>
           <div>
             <div>
@@ -24,10 +24,11 @@ export default function Home() {
             <h2>
               San Donato Lucca
             </h2>
-            <Link href='/about'>Learn more</Link>
-            <Link href='/signup'>Sign up</Link>
+            <Link href='/about'>Scopri di più</Link>
+            <Link href='/signup'>Iscriviti</Link>
           </div>
         </header>
+        <img className={styles.hoverimage} src={"/img/eleonora.png"} />
       </main>
     </>
   )

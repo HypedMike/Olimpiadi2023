@@ -48,11 +48,8 @@ export default function Signup(){
     }
 
     return (
-        <div>
+        <div className={style.body}>
             <h1>Sign up</h1>
-            <div>
-
-            </div>
             <div className={style.form}>
                 <input value={user.name} onChange={(e) => {setUser({...user, name: e.target.value})}} placeholder="Nome"/>
                 <input value={user.surname} onChange={(e) => {setUser({...user, surname: e.target.value})}} placeholder="Cognome"/>

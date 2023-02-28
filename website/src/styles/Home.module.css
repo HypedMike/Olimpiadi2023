@@ -1,3 +1,7 @@
+.body{
+  height: 100vh;
+}
+
 .header{
   text-align: center;
   padding: 30px;
@@ -7,6 +11,7 @@
   justify-content: center;
   display: flex;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  animation: lightsUp 5s forwards;
 }
 
 .header h2{
@@ -14,16 +19,48 @@
 }
 
 .header div a{
-  border: solid white 1px;
+  border: solid black 1px;
+  width: 50px;
   padding: 10px;
   background-color: transparent;
   color: white;
   text-decoration: none;
   font-size: 18px;
+  animation: lightsUp 5s forwards;
 }
 
 .header div a:hover{
   cursor: pointer;
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
+}
+
+.hoverimage{
+  position: absolute;
+  left: 0px;
+  width: 100vw;
+  animation: landing 5s forwards;
+}
+
+@keyframes lightsUp {
+  0%{background-color: black; color: white;}
+  100%{background-color: white; color: black;}
+}
+
+@keyframes landing {
+  0% {top: 0px; width: 2000px;}
+  100%{top: 800px;}
+}
+
+
+@media only screen and (max-width: 800px) {
+
+  .header h2{
+    line-height: 50px;
+  }
+
+  .hoverimage{
+    width: 100vh;
+    left: -300px;
+  }
 }
