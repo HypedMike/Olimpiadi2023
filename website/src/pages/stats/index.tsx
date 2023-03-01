@@ -32,7 +32,9 @@ export default function Stats(){
     return (
         <div className={style.body}>
             {
-                teams.map((elem, ind) => {
+                teams.sort((a, b) => {
+                    return data.filter((c) => c.team == b)[0].points - data.filter((c) => c.team == a)[0].points
+                }).map((elem, ind) => {
                     return (
                     <article key={ind*10}>
                         <h1>{elem}</h1>

@@ -1,7 +1,5 @@
-import { Guest } from "@/util/users";
 import { createClient } from "@supabase/supabase-js";
 import { NextApiRequest, NextApiResponse } from "next";
-import { BASE, PRIVATE_KEY } from "./env";
 
 
 export default function Signup(
@@ -27,7 +25,7 @@ export default function Signup(
 }
 
 async function getStats(){
-    const supabase = createClient(BASE, PRIVATE_KEY);
+    const supabase = createClient(process.env.BASE!, process.env.PRIVATE_KEY!);
     
     let sports = await supabase
     .from('sports')
