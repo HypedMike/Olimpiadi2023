@@ -7,9 +7,10 @@
     display: grid;
     grid-template-columns: 10% auto;
     justify-content: space-between;
-    background-color: black;
+    background-color: rgb(115, 105, 255);
     color: white;
     box-shadow: rgba(255, 255, 255, 0.404) 0px 0px 20px;
+    z-index: 10;
 }
 
 .logo{

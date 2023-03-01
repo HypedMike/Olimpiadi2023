@@ -8,7 +8,7 @@ export default function Signup(
     req: NextApiRequest,
     res: NextApiResponse
 ){
-    if(req.method == "GET"){
+    if(req.method == "POST"){
         //const body = JSON.parse(req.body);
         
         getUsers().then((r) => {

@@ -13,6 +13,7 @@ export default function Home() {
         <meta name="description" content="Olimpiadi di San Donato Lucca" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></meta>
       </Head>
       <main className={styles.body}>
         <header className={styles.header}>
@@ -24,8 +25,6 @@ export default function Home() {
             <h2>
               San Donato Lucca
             </h2>
-            <Link href='/about'>Scopri di più</Link>
-            <Link href='/signup'>Iscriviti</Link>
           </div>
         </header>
         <img className={styles.hoverimage} src={"/img/eleonora.png"} />

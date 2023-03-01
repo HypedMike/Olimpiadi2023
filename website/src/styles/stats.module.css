@@ -1,0 +1,27 @@
+.body{
+    min-height: 100vh;
+    background-image: url("https://www.all3dfree.net/uploads/5/1/9/6/51967249/_grass_4__grass_textures_seamless_turf_lawn_green_ground_field_texture_5.jpg");
+    background-size: cover;
+    background-repeat: repeat;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.body article{
+    background-image: url("https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?cs=srgb&dl=pexels-fwstudio-129731.jpg&fm=jpg");
+    background-size: cover;
+    margin: 10px;
+    padding: 30px;
+    padding-top: 10px;
+    border-radius: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.body article div{
+    border: solid white 2px;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 10px;
+}
