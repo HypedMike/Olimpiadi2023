@@ -12,7 +12,7 @@ export default function Signup(
 ){
     if(req.method == "POST"){
         const body = JSON.parse(req.body);
-        let guest = new Guest(body.name, body.surname, new Date(body.birthday), body.email, body.phonenumber);
+        let guest = new Guest(body.name, body.surname, new Date(body.birthday), body.email, body.phonenumber, body.sport_def);
         
         InsertUser(guest).then((r) => {
             res.status(200).json(r!);

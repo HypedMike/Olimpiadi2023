@@ -6,6 +6,13 @@
     margin-top: 20px;
 }
 
+.attention{
+ color: rgb(252, 126, 126);
+ background-color: black;
+ padding: 30px;
+ border-radius: 20px;   
+}
+
 .form{
     display: flex;
     flex-direction: column;
@@ -19,6 +26,15 @@
     border-bottom: solid black 1px;
     padding: 10px;
     color: black;
+}
+
+.form label select {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 20px;
 }
 
 .form button{

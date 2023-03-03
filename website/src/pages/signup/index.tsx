@@ -9,7 +9,12 @@ export default function Signup(){
         surname: "",
         birthday: "",
         phonenumber: "",
-        email: ""
+        email: "",
+        sport: false,
+        sport_def: "",
+        file_iscrizione: "",
+        file_assicurazione: "",
+        team: 0
     });
 
     const [parent, setParent] = useState({
@@ -32,7 +37,7 @@ export default function Signup(){
     }, [user.birthday])
 
     const send = () => {
-        let guest = new Guest(user.name, user.surname, new Date(user.birthday), user.email, user.phonenumber);
+        let guest = new Guest(user.name, user.surname, new Date(user.birthday), user.email, user.team, user.phonenumber);
         if(guest.getAge() < 18){
             guest.setParent(parent.name, parent.surname, parent.pn);
         }
@@ -51,8 +56,49 @@ export default function Signup(){
         <div className={style.body}>
             <h1>Sign up</h1>
             <div className={style.form}>
+                <div className={style.attention}>
+                    Scaricare e compilare i moduli per completare l'iscrizioni. Dovranno essere inviate all'indirizzo email <a href="mailto:olimpiadisandonato@gmail.com">olimpiadisandonato@gmail.com</a>
+                    <br></br>
+                    I file dovranno essere massimo 1MB ed in formato PDF
+                    <br></br>
+                    <a href="#">Assicurazione.pdf</a>
+                    <br></br>
+                    <a href="#">Iscrizione.pdf</a>
+                    <br></br>
+                    <h3>
+                        Iscrizione ed invio dei PDF (conferma) DOVRANNO essere inviati ENTRO E NON OLTRE la data di scadenza delle iscrizioni
+                    </h3>
+                    Il proprio nome verrà visualizzato nella schermata statistiche entro 3 giorni dall'invio altrimenti contattatre il responsabile IT
+                </div>
                 <input value={user.name} onChange={(e) => {setUser({...user, name: e.target.value})}} placeholder="Nome"/>
                 <input value={user.surname} onChange={(e) => {setUser({...user, surname: e.target.value})}} placeholder="Cognome"/>
+                <label>
+                    Giochi a qualche sport?
+                    <select onChange={(e) => {setUser({...user, sport: e.target.value == "true"})}}>
+                        <option value={"false"}>No</option>
+                        <option value={"true"}>Si</option>
+                    </select>
+                </label>
+                {
+
+                user.sport ?
+                    
+                <label>
+                    Quale sport?
+                    <select onChange={(e) => {setUser({...user, sport_def: e.target.value})}}>
+                        <option value={"Calcio"}>Calcio</option>
+                        <option value={"Tennis"}>Tennis</option>
+                        <option value={"Basket"}>Basket</option>
+                        <option value={"Piscina"}>Piscina</option>
+                        <option value={"Pallavolo"}>Pallavolo</option>
+                        <option value={"Altro"}>Altro</option>
+                    </select>
+                </label>
+
+                :
+
+                null
+                }
                 <label>
                     Data di nascita
                     <input placeholder="Data di nascita" type={"date"} value={user.birthday} onChange={(e) => {setUser({...user, birthday: e.target.value})}}/>                    
