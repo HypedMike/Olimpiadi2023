@@ -1,17 +1,21 @@
 .body{
   height: 100vh;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header{
   text-align: center;
   padding: 30px;
   font-size: 2em;
-  min-height: 90vh;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
   display: flex;
+  flex-direction: column;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   animation: lightsUp 5s forwards;
+  background-color: rgba(240, 248, 255, 0.384);
 }
 
 .header h2{
@@ -36,19 +40,44 @@
 }
 
 .hoverimage{
-  position: absolute;
   width: 100vw;
   animation: landing 5s forwards;
 }
 
-@keyframes lightsUp {
-  0%{background-color: black; color: white;}
-  100%{background-color: white; color: black;}
+.sponsorspace_body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-@keyframes landing {
-  0% {top: 0px; width: 2000px;}
-  100%{top: 500px;}
+.sponsorspace{
+  display: flex;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.background{
+  position: fixed;
+  height: 100vh;
+  background-image: url("/img/eleonora.png");
+  background-size: cover;
+  z-index: -1;
+}
+
+.sponsor{
+  background-color: black;
+  color: white;
+  padding: 30px;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 30px;
+  box-shadow: rgb(60, 112, 255) 5px 5px 0px;
+}
+
+.sponsor img{
+  height: 80px;
 }
 
 

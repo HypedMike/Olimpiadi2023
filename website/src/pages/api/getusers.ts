@@ -26,7 +26,7 @@ export default function Signup(
 }
 
 async function getUsers(){
-    const supabase = createClient(BASE, PRIVATE_KEY);
+    const supabase = createClient(process.env.BASE!, process.env.PRIVATE_KEY!);
     
     let { data, error } = await supabase
     .from('guests')

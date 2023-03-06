@@ -2,10 +2,48 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import sponsors from "../assets/sponsors.json";
+import { imageConfigDefault } from 'next/dist/shared/lib/image-config'
 
 const inter = Inter({ subsets: ['latin'] })
 
+function addDays(date: Date, days: number) {
+  date.setDate(date.getDate() + days);
+  return date;
+}
+
 export default function Home() {
+
+  const [year, setYear] = useState(0);
+
+  const [delay_value, setDelay] = useState<string>("0");
+
+  useEffect(() => {
+    let d = new Date("July 24, 2023");
+    let last_d = new Date();
+    let perc = 0;
+    let inter = setInterval(() => {
+      if(d.getTime() > last_d.getTime()){
+        last_d = addDays(last_d, 1);
+        perc += 1;
+      }else{
+        clearInterval(inter);
+      }
+      setDelay(Math.round((perc)*100/365).toString())
+    }, 10)
+  }, [])
+
+  useEffect(() => {
+    let y = 1000;
+    let inter = setInterval(() => {
+      if(++y <= 2023){
+        setYear(y);
+      }else{
+        clearInterval(inter);
+      }
+    }, 1)
+  }, [])
 
   return (
     <>
@@ -17,6 +55,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></meta>
       </Head>
       <main className={styles.body}>
+        <div className={styles.background} style={{
+          width: delay_value + "vw",
+        }}>
+          
+        </div>
         <header className={styles.header}>
           <div>
             <div>
@@ -26,10 +69,39 @@ export default function Home() {
             <h2>
               San Donato Lucca
             </h2>
+            <h2>
+              {year}
+            </h2>
+          </div>
+          <div className={styles.sponsorspace_body}>
+            Sponsors:
+            <div className={styles.sponsorspace}>
+              {
+                sponsors.map((elem, index) => {
+                  return (
+                    <Sponsor name={elem.name} img={elem.img} link={elem.link}/>
+                  )
+                })
+              }
+            </div>
           </div>
         </header>
-        <img className={styles.hoverimage} src={"/img/eleonora.png"} />
       </main>
     </>
+  )
+}
+
+declare interface ISponsor{
+  name: string;
+  img: string;
+  link: string;
+}
+
+function Sponsor(isp: ISponsor){
+  return (
+    <article className={styles.sponsor} onClick={() => window.location.href = isp.link}>
+      <img src={"img/sponsors_img/" + isp.img} />
+      <div>{isp.name}</div>
+    </article>
   )
 }
