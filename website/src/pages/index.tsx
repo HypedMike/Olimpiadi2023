@@ -79,7 +79,7 @@ export default function Home() {
               {
                 sponsors.map((elem, index) => {
                   return (
-                    <Sponsor name={elem.name} img={elem.img} link={elem.link}/>
+                    <Sponsor key={index} name={elem.name} img={elem.img} link={elem.link}/>
                   )
                 })
               }

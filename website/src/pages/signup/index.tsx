@@ -54,7 +54,7 @@ export default function Signup(){
 
     return (
         <div className={style.body}>
-            <h1>Iscrivi ora all'edizione 2023 delle Olimpiadi di San Donato!</h1>
+            <h1>Iscrivi ora all&apos;edizione 2023 delle Olimpiadi di San Donato!</h1>
             <div className={style.form}>
                 <div className={style.attention}>
                     Scaricare e compilare i moduli per completare l&apos;iscrizioni. Dovranno essere inviate all&apos;indirizzo email <a href="mailto:olimpiadisandonato@gmail.com">olimpiadisandonato@gmail.com</a>
