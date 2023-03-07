@@ -37,6 +37,7 @@ export default function Signup(){
     }, [user.birthday])
 
     const send = () => {
+        user.team = Math.floor(Math.random()*4) + 1;
         let guest = new Guest(user.name, user.surname, new Date(user.birthday), user.email, user.team, user.phonenumber);
         if(guest.getAge() < 18){
             guest.setParent(parent.name, parent.surname, parent.pn);

@@ -10,39 +10,9 @@ export default function Signup(
     if(req.method == "POST"){
         //const body = JSON.parse(req.body);
 
-        let age: number = req.body.age;
-
-        console.log(age);
-        
-
         getUsers().then((r) => {
-
-            console.log("all ages: ");
-            r.forEach((elem, index) => {
-                console.log(elem.getAge());
-            })
-            console.log("____");
-
-            let teams_avg_age_with_plus = [
-                getTeamAvgAgeWithPlus(r!.filter((a: Guest) => a.team == 0), age),
-                getTeamAvgAgeWithPlus(r!.filter((a: Guest) => a.team == 1), age),
-                getTeamAvgAgeWithPlus(r!.filter((a: Guest) => a.team == 2), age),
-                getTeamAvgAgeWithPlus(r!.filter((a: Guest) => a.team == 3), age),
-            ];
-
-            console.log(teams_avg_age_with_plus);
-
-            let result = [
-                [0, (teams_avg_age_with_plus[0] + overallAverageAge(r!)) / 2],
-                [1, (teams_avg_age_with_plus[1] + overallAverageAge(r!)) / 2],
-                [2, (teams_avg_age_with_plus[2] + overallAverageAge(r!)) / 2],
-                [3, (teams_avg_age_with_plus[3] + overallAverageAge(r!)) / 2],
-            ]
-
-            result.sort((a, b) => a[1] - b[1]);
-
             res.status(200).json(
-                result[0][0]
+                Math.floor(Math.random()*4)
             );
         }).catch((e) => {
             res.status(400).json("Something went wrong " + e);
@@ -56,13 +26,11 @@ export default function Signup(
     }
 }
 
-function overallAverageAge(guests: Guest[]){
+function calcTeamAvg(guests: Guest[], team: number){
     let sum = 0;
-    guests.forEach((elem, index) => {
+    guests.filter((a) => a.team = team).forEach((elem, index) => {
         sum += elem.getAge();
     })
-
-
     return sum / guests.length;
 }
 
