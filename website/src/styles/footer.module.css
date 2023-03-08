@@ -1,0 +1,46 @@
+.footer{
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px;
+}
+
+.frame{
+    width: 300px;
+    height: 300px;
+    border: solid rgb(53, 39, 255) 10px;
+    border-radius: 100%;
+
+}
+
+.contacts{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.contacts ul{
+    list-style: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .footer{
+        flex-direction: column;
+        text-align: center;
+        padding: 0px;
+        gap: 50px;
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .footer ul{
+        padding: 0px;
+    }
+
+    .footer ul li{
+        list-style: none;
+        padding: 0px;
+    }
+}

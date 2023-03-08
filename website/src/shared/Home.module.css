@@ -1,8 +1,6 @@
 .body{
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-size: cover;
-  background-position: center;
 }
 
 .header{
@@ -17,14 +15,6 @@
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   animation: lightsUp 5s forwards;
   background-color: transparent;
-}
-
-.header_content{
-  background-color: rgba(240, 248, 255, 0.568);
-  color: rgb(0, 0, 109);
-  padding: 10px;
-  border-radius: 100px;
-  
 }
 
 .header h2{

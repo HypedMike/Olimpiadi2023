@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import style from "../styles/navbar.module.css";
 
@@ -19,7 +20,7 @@ export default function Navbar(){
                 if(window.innerWidth < 800){
                     setVis(!vis)
                 }
-            }}>Logo</div>
+            }}><Image alt="Logo" height={100} width={100} src="/img/logo.png" /></div>
             {
             vis &&     
             <div className={style.buttons}>

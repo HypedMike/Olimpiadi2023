@@ -16,6 +16,7 @@ function addDays(date: Date, days: number) {
 export default function Home() {
 
   const [year, setYear] = useState(0);
+  const [bg, setBg] = useState(Math.floor(Math.random()*1 + 1));
 
   const [delay_value, setDelay] = useState<string>("0");
 
@@ -54,18 +55,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></meta>
       </Head>
-      <main className={styles.body}>
-        <div className={styles.background} style={{
-          width: delay_value + "vw",
+      <main className={styles.body} style={{
+          backgroundImage: "url('img/bg/bg" + bg + ".jpg')"
         }}>
-          
-        </div>
         <header className={styles.header}>
-          <div>
-            <div>
-              Sei pronto a rimetterti in gioco?
-            </div>
-            <h1>Olimpiadi</h1>
+          <div className={styles.header_content}>
+            <h1>OLIMPIADI</h1>
             <h2>
               San Donato Lucca
             </h2>
