@@ -20,7 +20,7 @@ export default function Navbar(){
                 if(window.innerWidth < 800){
                     setVis(!vis)
                 }
-            }}><Image alt="Logo" height={100} width={100} src="/img/logo.png" /></div>
+            }}><Image alt="Logo" height={80} width={80} src="/img/logo.png" /></div>
             {
             vis &&     
             <div className={style.buttons}>

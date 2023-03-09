@@ -3,19 +3,18 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-size: cover;
   background-position: center;
+  padding-top: 50px;
 }
 
 .header{
   text-align: center;
-  padding: 30px;
-  font-size: 2em;
+  font-size: 30px;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  animation: lightsUp 5s forwards;
   background-color: transparent;
 }
 
