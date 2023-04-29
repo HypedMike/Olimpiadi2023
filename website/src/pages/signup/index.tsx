@@ -75,9 +75,6 @@ export default function Signup(){
                     Scaricare e compilare i moduli per completare l&apos;iscrizioni. Dovranno essere inviate all&apos;indirizzo email <a href="mailto:olimpiadisandonato@gmail.com">olimpiadisandonato@gmail.com</a>
                     <br></br>
                     <a href="#">Assicurazione.pdf</a>
-                    <br></br>
-                    <a href="#">Iscrizione.pdf</a>
-                    <br></br>
                     <h3>
                         Iscrizione ed invio dei PDF (conferma) DOVRANNO essere inviati ENTRO E NON OLTRE la data di scadenza delle iscrizioni
                     </h3>
@@ -90,10 +87,10 @@ export default function Signup(){
                     Sei un ragazzo o un ragazza? <b>{user.gender != "" ? user.gender : null}</b>
                     <div>
                         <button style={{backgroundColor: "transparent"}} onClick={() => {setUser({...user, gender: "maschio"})}}>
-                            <Image height={380} width={200} src="/img/male_avatar.PNG" alt="male"/>
+                            <Image height={200} width={100} src="/img/male_avatar.PNG" alt="male"/>
                         </button>
                         <button style={{backgroundColor: "transparent"}} onClick={() => {setUser({...user, gender: "femmina"})}}>
-                            <Image height={380} width={200} src="/img/female_avatar.PNG" alt="female"/>
+                            <Image height={200} width={100} src="/img/female_avatar.PNG" alt="female"/>
                         </button>
                     </div>
                 </div>
@@ -117,6 +114,7 @@ export default function Signup(){
                         <option value={"Basket"}>Basket</option>
                         <option value={"Piscina"}>Piscina</option>
                         <option value={"Pallavolo"}>Pallavolo</option>
+                        <option value={"Atletica"}>Atletica</option>
                         <option value={"Altro"}>Altro</option>
                     </select>
                 </label>

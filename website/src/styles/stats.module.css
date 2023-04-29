@@ -1,6 +1,6 @@
 .body{
     min-height: 100vh;
-    background-image: url("https://www.all3dfree.net/uploads/5/1/9/6/51967249/_grass_4__grass_textures_seamless_turf_lawn_green_ground_field_texture_5.jpg");
+    background-color: aqua;
     background-size: cover;
     background-repeat: repeat;
     padding-top: 100px;

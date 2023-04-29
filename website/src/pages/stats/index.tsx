@@ -11,6 +11,7 @@ export default function Stats(){
 
     const [data, setData] = useState<sportProps[]>([]);
 
+    const [loading, setLoading] = useState<boolean>(true);
     const [teams, setTeams] = useState<string[]>([])
 
     useEffect(() => {
@@ -26,6 +27,9 @@ export default function Stats(){
                         setTeams(temp);
                     }
                 });
+                setLoading(false);
+            }).catch((err) => {
+                setLoading(false);
             })
         })
     }, [])
@@ -46,7 +50,8 @@ export default function Stats(){
                         })}
                     </article>
                 )
-            })}
+                })
+            }
         </div>
     )
 }

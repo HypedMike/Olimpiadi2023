@@ -49,5 +49,5 @@ async function InsertUser(guest: Guest){
         console.log(error);
         return false;
     }
-    return data == null;
+    return data;
 }
