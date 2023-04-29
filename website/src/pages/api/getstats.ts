@@ -2,14 +2,14 @@ import { createClient } from "@supabase/supabase-js";
 import { NextApiRequest, NextApiResponse } from "next";
 
 
-export default function Signup(
+export default function getStats(
     req: NextApiRequest,
     res: NextApiResponse
 ){
     if(req.method == "GET"){
         //const body = JSON.parse(req.body);
         
-        getStats().then((r) => {
+        getStatsWrap().then((r) => {
             console.log("about to send " + r);
             res.status(200).json(r!);
         }).catch((e) => {
@@ -24,7 +24,7 @@ export default function Signup(
     }
 }
 
-async function getStats(){
+async function getStatsWrap(){
     const supabase = createClient(process.env.BASE!, process.env.PRIVATE_KEY!);
     
     let sports = await supabase
@@ -36,6 +36,8 @@ async function getStats(){
     .select('*')
 
     let res: { sport: any; team: any; points: number}[] = [];
+
+    //return sports;
 
     sports.data!.forEach(element => {
         res.push({

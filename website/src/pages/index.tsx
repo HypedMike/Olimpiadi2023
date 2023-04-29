@@ -16,7 +16,7 @@ function addDays(date: Date, days: number) {
 export default function Home() {
 
   const [year, setYear] = useState(0);
-  const [bg, setBg] = useState(Math.floor(Math.random()*1 + 1));
+  const [bg, setBg] = useState(Math.floor(Math.random() * 1 + 1));
 
   const [delay_value, setDelay] = useState<string>("0");
 
@@ -25,22 +25,22 @@ export default function Home() {
     let last_d = new Date();
     let perc = 0;
     let inter = setInterval(() => {
-      if(d.getTime() > last_d.getTime()){
+      if (d.getTime() > last_d.getTime()) {
         last_d = addDays(last_d, 1);
         perc += 1;
-      }else{
+      } else {
         clearInterval(inter);
       }
-      setDelay(Math.round((perc)*100/365).toString())
+      setDelay(Math.round((perc) * 100 / 365).toString())
     }, 10)
   }, [])
 
   useEffect(() => {
     let y = 1000;
     let inter = setInterval(() => {
-      if(++y <= 2023){
+      if (++y <= 2023) {
         setYear(y);
-      }else{
+      } else {
         clearInterval(inter);
       }
     }, 1)
@@ -56,43 +56,62 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></meta>
       </Head>
       <main className={styles.body} style={{
-          backgroundImage: "url('img/bg/bg" + bg + ".jpg')"
-        }}>
+        backgroundImage: "url('img/bg/bg" + bg + ".jpg')"
+      }}>
         <header className={styles.header}>
-          <div className={styles.header_content}>
-            <h1>OLIMPIADI</h1>
-            <h2>
-              San Donato Lucca
-            </h2>
-            <h2>
-              {year}
-            </h2>
-          </div>
+          <div className={styles.context} >
+            <div className={styles.header_content}>
+              <h1>OLIMPIADI</h1>
+              <h2>
+                San Donato Lucca
+              </h2>
+              <h2>
+                {year}
+              </h2>
+              <Link href={"/signup"}>ISCRIVITI</Link>
+            </div>
+            
           <div className={styles.sponsorspace_body}>
             Sponsors:
             <div className={styles.sponsorspace}>
               {
                 sponsors.map((elem, index) => {
                   return (
-                    <Sponsor key={index} name={elem.name} img={elem.img} link={elem.link}/>
+                    <Sponsor key={index} name={elem.name} img={elem.img} link={elem.link} />
                   )
                 })
               }
             </div>
           </div>
+          </div>
+
+          <div className={styles.area} >
+            <ul className={styles.circles}>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div >
         </header>
       </main>
     </>
   )
 }
 
-declare interface ISponsor{
+declare interface ISponsor {
   name: string;
   img: string;
   link: string;
 }
 
-function Sponsor(isp: ISponsor){
+function Sponsor(isp: ISponsor) {
   return (
     <article className={styles.sponsor} onClick={() => window.location.href = isp.link}>
       <img src={"img/sponsors_img/" + isp.img} />

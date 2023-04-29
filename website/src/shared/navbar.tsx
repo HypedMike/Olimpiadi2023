@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import style from "../styles/navbar.module.css";
+import Link from "next/link";
 
 export default function Navbar(){
 
@@ -24,10 +25,10 @@ export default function Navbar(){
             {
             vis &&     
             <div className={style.buttons}>
-                <button onClick={() => {window.location.href = "/"}}>Home</button>
-                <button onClick={() => {window.location.href = "/signup"}}>Form</button>
-                <button onClick={() => {window.location.href = "/about"}}>About</button>
-                <button onClick={() => {window.location.href = "/stats"}}>Statistiche</button>
+                <Link href="/">Home</Link>
+                <Link href="/signup">Form</Link>
+                <Link href="/about">About</Link>
+                <Link href="/stats">Statistiche</Link>
             </div>}
         </nav>
     )

@@ -17,6 +17,7 @@ export default function Stats(){
         fetch("/api/getstats").then((r) => {
             r.json()
             .then((res) => {
+                console.log(res);
                 setData(res);
                 res.forEach((element: sportProps) => {
                     if(!teams.includes(element.team)){
