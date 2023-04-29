@@ -13,8 +13,6 @@ export default function Signup(
     if(req.method == "POST"){
         const guest = JSON.parse(req.body);
         
-        console.log(guest);
-
         InsertUser(guest).then((r) => {
             console.log(r);
             if(!r){

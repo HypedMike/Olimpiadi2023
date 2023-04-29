@@ -5,6 +5,8 @@ import Image from "next/image";
 
 export default function Signup(){
 
+    const [loading, setLoading] = useState(false);
+
     const [user, setUser] = useState({
         name: "",
         surname: "",
@@ -54,6 +56,8 @@ export default function Signup(){
             guest.setParent(parent.parent_name, parent.parent_surname, parent.parent_phonenumber);
         }
 
+        setLoading(true);
+
         fetch("/api/signup", {
             method: "POST",
             body: JSON.stringify(guest)
@@ -62,8 +66,9 @@ export default function Signup(){
                 console.log(r);
                 if(r){
                     alert("Iscrizione avvenuta con successo!");
+                    setLoading(false);
                 }
-            })
+            }).catch((e) => {setLoading(false)})
         })
     }
 
@@ -142,7 +147,10 @@ export default function Signup(){
                     Liberatorio per l&apos;utilizzo delle foto sui social della parrocchia
                     <input checked={user.legal_photos} type={"checkbox"} onChange={(e) => {setUser({...user, legal_photos: e.target.checked})}}/>
                 </label>
-                <button onClick={send}>Invia</button>
+                {
+                    loading ? null :
+                  <button disabled={loading} onClick={send}>Invia</button>
+                }
             </div>
         </div>
     )
