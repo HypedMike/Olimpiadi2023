@@ -43,19 +43,21 @@ export class Guest extends User{
     phonenumber: string;
     sport_def?: string;
     team: number;
+    gender: string;
 
     // in case underage
     parent_name?: string;
     parent_surname?: string;
     parent_phonenumber?: string;
 
-    constructor(name: string, surname: string, birthday: Date, email: string, team: number, phonenumber: string, sport_def?: string){
+    constructor(name: string, surname: string, birthday: Date, email: string, team: number, phonenumber: string, gender: string, sport_def?: string){
         super(name, surname);
 
         this.birthday = birthday;
         this.email = email;
         this.phonenumber = phonenumber;
         this.team = team;
+        this.gender = gender;
 
         if(sport_def != undefined && sport_def != null){
             this.sport_def = sport_def;

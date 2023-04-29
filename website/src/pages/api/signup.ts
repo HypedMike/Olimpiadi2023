@@ -11,11 +11,17 @@ export default function Signup(
     res: NextApiResponse
 ){
     if(req.method == "POST"){
-        const body = JSON.parse(req.body);
-        let guest = new Guest(body.name, body.surname, new Date(body.birthday), body.email, body.phonenumber, body.sport_def);
+        const guest = JSON.parse(req.body);
         
+        console.log(guest);
+
         InsertUser(guest).then((r) => {
-            res.status(200).json(r!);
+            console.log(r);
+            if(!r){
+                res.status(500).json("Something went wrong");
+            }else{
+                res.status(200).json(r!);
+            }
         })
         
     }else{
@@ -32,7 +38,16 @@ async function InsertUser(guest: Guest){
     const { data, error } = await supabase
     .from('guests')
     .insert([
-        { name: guest.name, surname: guest.surname },
+        { name: guest.name, surname: guest.surname,
+            birthday: guest.birthday, email: guest.email, 
+            phonenumber: guest.phonenumber, gender: guest.gender,
+            sport: guest.sport_def, parent_name: guest.parent_name,
+            parent_surname: guest.parent_surname, parent_phonenumber: guest.parent_phonenumber
+        },
     ])
-    return data;
+    if(error){
+        console.log(error);
+        return false;
+    }
+    return data == null;
 }

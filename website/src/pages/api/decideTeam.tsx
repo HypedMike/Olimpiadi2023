@@ -68,6 +68,8 @@ async function getUsers(){
                 element.email,
                 element.team,
                 element.phonenumber,
+                element.gender,
+                element.sport
             )
         )
     });

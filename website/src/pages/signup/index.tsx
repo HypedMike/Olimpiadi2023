@@ -1,6 +1,7 @@
 import { Guest } from "@/util/users";
 import { useEffect, useState } from "react"
 import style from "../../styles/signup.module.css";
+import Image from "next/image";
 
 export default function Signup(){
 
@@ -9,18 +10,20 @@ export default function Signup(){
         surname: "",
         birthday: "",
         phonenumber: "",
+        gender: "",
         email: "",
         sport: false,
         sport_def: "",
         file_iscrizione: "",
         file_assicurazione: "",
+        legal_photos: false,
         team: 0
     });
 
     const [parent, setParent] = useState({
-        name: "",
-        surname: "",
-        pn: ""
+        parent_name: "",
+        parent_surname: "",
+        parent_phonenumber: ""
     })
 
     const [underage, setUnderage] = useState(false);
@@ -38,9 +41,17 @@ export default function Signup(){
 
     const send = () => {
         user.team = Math.floor(Math.random()*4) + 1;
-        let guest = new Guest(user.name, user.surname, new Date(user.birthday), user.email, user.team, user.phonenumber);
+
+        if(user.name == "" || user.surname == "" || user.birthday == "" ||
+         user.phonenumber == "" || user.gender == "" || user.email == ""
+          || user.legal_photos == false){
+            alert("Compila tutti i campi");
+            return;
+        }
+
+        let guest = new Guest(user.name, user.surname, new Date(user.birthday), user.email, user.team, user.phonenumber, user.gender, user.sport_def);
         if(guest.getAge() < 18){
-            guest.setParent(parent.name, parent.surname, parent.pn);
+            guest.setParent(parent.parent_name, parent.parent_surname, parent.parent_phonenumber);
         }
 
         fetch("/api/signup", {
@@ -49,6 +60,9 @@ export default function Signup(){
         }).then((res) => {
             res.json().then((r) => {
                 console.log(r);
+                if(r){
+                    alert("Iscrizione avvenuta con successo!");
+                }
             })
         })
     }
@@ -71,6 +85,19 @@ export default function Signup(){
                 </div>
                 <input value={user.name} onChange={(e) => {setUser({...user, name: e.target.value})}} placeholder="Nome"/>
                 <input value={user.surname} onChange={(e) => {setUser({...user, surname: e.target.value})}} placeholder="Cognome"/>
+                
+                <div>
+                    Sei un ragazzo o un ragazza? <b>{user.gender != "" ? user.gender : null}</b>
+                    <div>
+                        <button style={{backgroundColor: "transparent"}} onClick={() => {setUser({...user, gender: "maschio"})}}>
+                            <Image height={380} width={200} src="/img/male_avatar.PNG" alt="male"/>
+                        </button>
+                        <button style={{backgroundColor: "transparent"}} onClick={() => {setUser({...user, gender: "femmina"})}}>
+                            <Image height={380} width={200} src="/img/female_avatar.PNG" alt="female"/>
+                        </button>
+                    </div>
+                </div>
+
                 <label>
                     Giochi a qualche sport?
                     <select onChange={(e) => {setUser({...user, sport: e.target.value == "true"})}}>
@@ -106,15 +133,21 @@ export default function Signup(){
                     underage &&
                     <div className={style.underageform}>
                         <h3>Modulo per minorenni</h3>
-                        <input value={parent.name} onChange={(e) => {setParent({...parent, name: e.target.value})}} placeholder="Nome genitore"/>
-                        <input value={parent.surname} onChange={(e) => {setParent({...parent, surname: e.target.value})}} placeholder="Cognome genitore"/>
-                        <input type={"number"} value={parent.pn} onChange={(e) => {setParent({...parent, pn: e.target.value})}} placeholder="Numero di telefono genitore"/>
+                        <input value={parent.parent_name} onChange={(e) => {setParent({...parent, parent_name: e.target.value})}} placeholder="Nome genitore"/>
+                        <input value={parent.parent_surname} onChange={(e) => {setParent({...parent, parent_surname: e.target.value})}} placeholder="Cognome genitore"/>
+                        <input type={"number"} value={parent.parent_phonenumber} onChange={(e) => {setParent({...parent, parent_phonenumber: e.target.value})}} placeholder="Numero di telefono genitore"/>
                     </div>
                 }
                 <input type={"number"} placeholder="Numero di telefono" value={user.phonenumber} onChange={(e) => {setUser({...user, phonenumber: e.target.value})}}/>
                 <input placeholder="Email" value={user.email} onChange={(e) => {setUser({...user, email: e.target.value})}}/>
+                <label>
+                    Liberatorio per l&apos;utilizzo delle foto sui social della parrocchia
+                    <input checked={user.legal_photos} type={"checkbox"} onChange={(e) => {setUser({...user, legal_photos: e.target.checked})}}/>
+                </label>
                 <button onClick={send}>Invia</button>
             </div>
         </div>
     )
 }
+
+
