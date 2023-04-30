@@ -8,7 +8,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const { query } = context;
     const id = query.id;
   
-    const fetched_user = await (await fetch('http://localhost:3000/api/getuser/' + (id as string))).json() as UserInterface;
+    const fetched_user = await (await fetch('https://olimpiadi2023.vercel.app/signup/check/' + (id as string))).json() as UserInterface;
 
     // Get the query parameter from the query object
   
