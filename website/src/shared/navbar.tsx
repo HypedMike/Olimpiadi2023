@@ -27,7 +27,7 @@ export default function Navbar(){
             <div className={style.buttons}>
                 <Link href="/">Home</Link>
                 <Link href="/signup">Form</Link>
-                <Link href="/stats">Statistiche</Link>
+                <Link href="/#">Statistiche</Link>
             </div>}
         </nav>
     )
