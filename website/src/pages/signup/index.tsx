@@ -104,13 +104,14 @@ export default function Signup() {
             <h1>Iscriviti ora all&apos;edizione 2023 delle Olimpiadi di San Donato!</h1>
             <div className={style.form}>
                 <div className={style.attention}>
-                    Scaricare e compilare i moduli per completare l&apos;iscrizioni. Dovranno essere inviate all&apos;indirizzo email <a href="mailto:olimpiadisandonato@gmail.com">olimpiadisandonato@gmail.com</a>
+                    Scaricare e compilare il modulo assicurativo per completare l&apos;iscrizione. Dovrà essere inviato <b>compilato</b> all&apos;indirizzo email <a href="mailto:olimpiadisandonato@gmail.com">olimpiadisandonato@gmail.com</a>
+                    <br></br>
                     <br></br>
                     <a href="/docs/assicurazione.pdf">Assicurazione.pdf</a>
                     <h3>
-                        Iscrizione ed invio dei PDF (conferma) DOVRANNO essere inviati ENTRO E NON OLTRE la data di scadenza delle iscrizioni
+                        L&apos;iscrizione online (sottostante) ed invio del PDF DOVRANNO essere inviati ENTRO E NON OLTRE la data di scadenza delle iscrizioni
                     </h3>
-                    Il proprio nome verrà visualizzato nella schermata statistiche entro 3 giorni dall&apos;invio altrimenti contattatre il responsabile IT
+                    Nella schermata successiva all&apos;iscrizione potrete tenere traccia del processo di iscrizione
                 </div>
                 <input value={user.name} onChange={(e) => { setUser({ ...user, name: e.target.value }) }} placeholder="Nome" />
                 <input value={user.surname} onChange={(e) => { setUser({ ...user, surname: e.target.value }) }} placeholder="Cognome" />
