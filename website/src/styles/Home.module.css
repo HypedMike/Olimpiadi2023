@@ -20,18 +20,16 @@
 .header_content{
   background-color: rgba(240, 248, 255, 0);
   color: rgb(255, 255, 255);
-  padding: 50px;
   width: fit-content;
-  border-radius: 20px;
+  padding-bottom: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.header_content  a{
-  background-color: rgb(225, 132, 132);
-  border: white 3px solid;
-  color: white;
-  padding: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
 .header h2{
   line-height: 10px;
@@ -39,13 +37,14 @@
 
 .header div a{
   border: solid white 1px;
-  width: 50px;
   padding: 10px;
   background-color: transparent;
   color: white;
   text-decoration: none;
   font-size: 18px;
+  width: 50px;
   animation: lightsUp 5s forwards;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header div a:hover{
@@ -146,21 +145,21 @@
   left: 70%;
   width: 80px;
   height: 80px;
-  animation-delay: 0s;
+  animation-delay: 2s;
 }
 
 .circles img:nth-child(2){
   left: 25%;
   width: 80px;
   height: 80px;
-  animation-delay: 0s;
+  animation-delay: 10s;
 }
 
 .circles img:nth-child(3){
   left: 50%;
   width: 50px;
   height: 50px;
-  animation-delay: 0s;
+  animation-delay: 5s;
 }
 
 .circles li:nth-child(1){
@@ -280,6 +279,7 @@
 
   .header_content{
     padding: 10px;
+    padding-left: 0px;
     text-align: center;
   }
 }

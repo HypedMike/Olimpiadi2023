@@ -66,8 +66,10 @@ export default function Home() {
               <h2>
                 {year}
               </h2>
-              <Link href={"/signup"}>ISCRIVITI</Link>
-              <Link href={"/signup"}>SCOPRI DI PIÙ</Link>
+              <div>
+                <Link href={"/signup"}>ISCRIVITI</Link>
+                <Link href={"/signup"}>SCOPRI DI PIÙ</Link>
+              </div>
             </div>
             
           <div className={styles.sponsorspace_body}>
