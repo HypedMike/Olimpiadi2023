@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import sponsors from "../assets/sponsors.json";
 import { imageConfigDefault } from 'next/dist/shared/lib/image-config'
+import Image from 'next/image'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -61,18 +62,15 @@ export default function Home() {
         <header className={styles.header}>
           <div className={styles.context} >
             <div className={styles.header_content}>
-              <h1>OLIMPIADI</h1>
-              <h2>
-                San Donato Lucca
-              </h2>
+              <Image width={300} height={300} alt='logo' src='/img/logo.png' />
               <h2>
                 {year}
               </h2>
               <Link href={"/signup"}>ISCRIVITI</Link>
+              <Link href={"/signup"}>SCOPRI DI PIÙ</Link>
             </div>
             
           <div className={styles.sponsorspace_body}>
-            Sponsors:
             <div className={styles.sponsorspace}>
               {
                 sponsors.map((elem, index) => {
@@ -87,6 +85,8 @@ export default function Home() {
 
           <div className={styles.area} >
             <ul className={styles.circles}>
+              <Image width={100} height={100} alt='logo' src='/img/logo.png' />
+              <Image width={100} height={100} alt='logo' src='/img/logo.png' />
               <li></li>
               <li></li>
               <li></li>
@@ -97,6 +97,7 @@ export default function Home() {
               <li></li>
               <li></li>
               <li></li>
+              <Image width={100} height={100} alt='logo' src='/img/logo.png' />
             </ul>
           </div >
         </header>

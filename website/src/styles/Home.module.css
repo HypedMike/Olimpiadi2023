@@ -14,23 +14,23 @@
   flex-direction: column;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: transparent;
+  color: white;
 }
 
 .header_content{
-  background-color: rgba(240, 248, 255, 0.281);
-  color: rgb(0, 0, 109);
-  padding: 100px;
+  background-color: rgba(240, 248, 255, 0);
+  color: rgb(255, 255, 255);
+  padding: 50px;
   width: fit-content;
-  border-radius: 100px;
-  border: solid 1px white;
+  border-radius: 20px;
 }
 
-.header_content a{
+.header_content  a{
   background-color: rgb(225, 132, 132);
-  border: 3px solid white;
+  border: white 3px solid;
   color: white;
   padding: 10px;
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header h2{
@@ -38,7 +38,7 @@
 }
 
 .header div a{
-  border: solid black 1px;
+  border: solid white 1px;
   width: 50px;
   padding: 10px;
   background-color: transparent;
@@ -50,8 +50,8 @@
 
 .header div a:hover{
   cursor: pointer;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 .hoverimage{
@@ -81,7 +81,7 @@
   height: 100px;
   margin: 10px;
   border-radius: 30px;
-  box-shadow: rgb(60, 112, 255) 5px 5px 0px;
+  box-shadow: #4e54c8 5px 5px 0px;
 }
 
 .sponsor img{
@@ -107,9 +107,8 @@
   background: #4e54c8;  
   background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
   width: 100%;
-  height:100vh;
-  
- 
+  min-height:100vh;
+
 }
 
 .circles{
@@ -130,7 +129,38 @@
   background: rgba(255, 255, 255, 0.2);
   animation: animate 25s linear infinite;
   bottom: -150px;
-  
+}
+
+.circles img{
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 100px;
+  height: 100px;
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+  opacity: 30%;
+}
+
+.circles img:nth-child(1){
+  left: 70%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.circles img:nth-child(2){
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.circles img:nth-child(3){
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  animation-delay: 0s;
 }
 
 .circles li:nth-child(1){

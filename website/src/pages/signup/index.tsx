@@ -107,7 +107,7 @@ export default function Signup() {
                     Scaricare e compilare il modulo assicurativo per completare l&apos;iscrizione. Dovrà essere inviato <b>compilato</b> all&apos;indirizzo email <a href="mailto:olimpiadisandonato@gmail.com">olimpiadisandonato@gmail.com</a>
                     <br></br>
                     <br></br>
-                    <a href="/docs/assicurazione.pdf">Assicurazione.pdf</a>
+                    <a href="/docs/assicurazione.pdf">modulo_assicurativo.pdf</a>
                     <h3>
                         L&apos;iscrizione online (sottostante) ed invio del PDF DOVRANNO essere inviati ENTRO E NON OLTRE la data di scadenza delle iscrizioni
                     </h3>
