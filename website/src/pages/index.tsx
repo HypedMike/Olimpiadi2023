@@ -16,36 +16,24 @@ function addDays(date: Date, days: number) {
 
 export default function Home() {
 
-  const [year, setYear] = useState(0);
+  const [year, setYear] = useState(2);
   const [bg, setBg] = useState(Math.floor(Math.random() * 1 + 1));
 
   const [delay_value, setDelay] = useState<string>("0");
 
   useEffect(() => {
-    let d = new Date("July 24, 2023");
-    let last_d = new Date();
-    let perc = 0;
-    let inter = setInterval(() => {
-      if (d.getTime() > last_d.getTime()) {
-        last_d = addDays(last_d, 1);
-        perc += 1;
+    let y = 2;
+    const interval = setInterval(() => {
+      if (y < 2023) {
+        y *= 1.15;
+        setYear(Math.round(y));
       } else {
-        clearInterval(inter);
+        setYear(2023);
+        clearInterval(interval);
       }
-      setDelay(Math.round((perc) * 100 / 365).toString())
-    }, 10)
-  }, [])
-
-  useEffect(() => {
-    let y = 1000;
-    let inter = setInterval(() => {
-      if (++y <= 2023) {
-        setYear(y);
-      } else {
-        clearInterval(inter);
-      }
-    }, 1)
-  }, [])
+    }, 100);
+    
+  }, []);
 
   return (
     <>
@@ -68,7 +56,7 @@ export default function Home() {
               </h2>
               <div>
                 <Link href={"/signup"}>ISCRIVITI</Link>
-                <Link href={"/signup"}>SCOPRI DI PIÙ</Link>
+                <Link href={"/about"}>SCOPRI DI PIÙ</Link>
               </div>
             </div>
             

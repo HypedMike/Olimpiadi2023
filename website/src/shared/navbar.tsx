@@ -24,9 +24,10 @@ export default function Navbar(){
             }}><Image alt="Logo" height={80} width={80} src="/img/logo.png" /></div>
             {
             vis &&     
-            <div className={style.buttons}>
+            <div className={style.buttons} onClick={() => {setVis(false)}}>
                 <Link href="/">Home</Link>
                 <Link href="/signup">Form</Link>
+                <Link href="/about">About</Link>
                 <Link href="/#">Statistiche</Link>
             </div>}
         </nav>

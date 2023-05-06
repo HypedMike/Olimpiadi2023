@@ -14,8 +14,12 @@ export default function Signup(
     res: NextApiResponse
 ){
     if(req.method == "POST"){
+
+        
         const guest = JSON.parse(req.body);
         
+
+
         InsertUser(guest).then((r) => {
             console.log(r);
             if(!r){

@@ -1,9 +1,11 @@
 import { Guest } from "@/util/users";
-import { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import style from "../../styles/signup.module.css";
 import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import ReCAPTCHA from "react-google-recaptcha";
+import { CAPTCHAPUBLICKEY } from "@/publickey";
 
 export default function Signup() {
 
@@ -48,8 +50,6 @@ export default function Signup() {
     const send = () => {
         user.team = Math.floor(Math.random() * 4) + 1;
 
-
-
         if (user.name == "" || user.surname == "" || user.birthday == "" ||
             user.phonenumber == "" || user.gender == "" || user.email == ""
             || user.legal_photos == false) {
@@ -57,16 +57,16 @@ export default function Signup() {
             return;
         }
 
-        let guest = new Guest(user.name, user.surname, new Date(user.birthday), user.email, user.team, user.phonenumber, user.gender, user.sport_def);
-        if (guest.getAge() < 18) {
-            guest.setParent(parent.parent_name, parent.parent_surname, parent.parent_phonenumber);
+        let guestObj = new Guest(user.name, user.surname, new Date(user.birthday), user.email, user.team, user.phonenumber, user.gender, user.sport_def);
+        if (guestObj.getAge() < 18) {
+            guestObj.setParent(parent.parent_name, parent.parent_surname, parent.parent_phonenumber);
         }
 
         setLoading(true);
 
         fetch("/api/signup", {
             method: "POST",
-            body: JSON.stringify(guest)
+            body: JSON.stringify(guestObj),
         }).then((res) => {
             res.json().then((r) => {
                 console.log(r);
