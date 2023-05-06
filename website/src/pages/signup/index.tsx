@@ -50,8 +50,13 @@ export default function Signup() {
     const send = () => {
         user.team = Math.floor(Math.random() * 4) + 1;
 
+        if((user.phonenumber != "" && (user.phonenumber.length < 8 || user.phonenumber.length > 11)) || (parent.parent_phonenumber != "" && (parent.parent_phonenumber.length < 8 || parent.parent_phonenumber.length > 11))){
+            alert("Numero di telefono invalido, numero di cifre errato");
+            return;
+        }
+
         if (user.name == "" || user.surname == "" || user.birthday == "" ||
-            user.phonenumber == "" || user.gender == "" || user.email == ""
+            (user.phonenumber == "" && parent.parent_phonenumber == "") || user.gender == "" || user.email == ""
             || user.legal_photos == false) {
             alert("Compila tutti i campi");
             return;
@@ -59,6 +64,10 @@ export default function Signup() {
 
         let guestObj = new Guest(user.name, user.surname, new Date(user.birthday), user.email, user.team, user.phonenumber, user.gender, user.sport_def);
         if (guestObj.getAge() < 18) {
+            if(parent.parent_name == "" || parent.parent_surname == "" || parent.parent_phonenumber == ""){
+                alert("Risulti minorenne. Compila i campi genitori");
+                return;
+            }
             guestObj.setParent(parent.parent_name, parent.parent_surname, parent.parent_phonenumber);
         }
 
@@ -104,7 +113,7 @@ export default function Signup() {
             <h1>Iscriviti ora all&apos;edizione 2023 delle Olimpiadi di San Donato!</h1>
             <div className={style.form}>
                 <div className={style.attention}>
-                    Scaricare e compilare il modulo assicurativo per completare l&apos;iscrizione. Dovrà essere inviato <b>compilato</b> all&apos;indirizzo email <a href="mailto:olimpiadisandonato@gmail.com">olimpiadisandonato@gmail.com</a>
+                    Scaricare e compilare il modulo assicurativo per completare l&apos;iscrizione. Dovrà essere inviato <b>compilato</b> all&apos;indirizzo email <a href="mailto:olimpiadi.levele@gmail.com">olimpiadi.levele@gmail.com</a>
                     <br></br>
                     <br></br>
                     <a href="/docs/modulo_assicurativo.pdf">modulo_assicurativo.pdf</a>
@@ -121,9 +130,11 @@ export default function Signup() {
                     <div>
                         <button style={{ backgroundColor: "transparent" }} onClick={() => { setUser({ ...user, gender: "maschio" }) }}>
                             <Image height={200} width={100} src="/img/male_avatar.PNG" alt="male" />
+                            <div style={{color: "black"}}>Ragazzo</div>
                         </button>
                         <button style={{ backgroundColor: "transparent" }} onClick={() => { setUser({ ...user, gender: "femmina" }) }}>
                             <Image height={200} width={100} src="/img/female_avatar.PNG" alt="female" />
+                            <div style={{color: "black"}}>Ragazza</div>
                         </button>
                     </div>
                 </div>
@@ -168,10 +179,10 @@ export default function Signup() {
                         <h3>Modulo per minorenni</h3>
                         <input value={parent.parent_name} onChange={(e) => { setParent({ ...parent, parent_name: e.target.value }) }} placeholder="Nome genitore" />
                         <input value={parent.parent_surname} onChange={(e) => { setParent({ ...parent, parent_surname: e.target.value }) }} placeholder="Cognome genitore" />
-                        <input type={"number"} value={parent.parent_phonenumber} onChange={(e) => { setParent({ ...parent, parent_phonenumber: e.target.value }) }} placeholder="Numero di telefono genitore" />
+                        <input type={"number"} value={parent.parent_phonenumber} onChange={(e) => { setParent({ ...parent, parent_phonenumber: e.target.value }) }} placeholder="Numero di cellulare (senza prefisso '+39' e senza spazi)" />
                     </div>
                 }
-                <input type={"number"} placeholder="Numero di telefono" value={user.phonenumber} onChange={(e) => { setUser({ ...user, phonenumber: e.target.value }) }} />
+                <input type={"number"} placeholder="Numero di cellulare (senza prefisso '+39' e senza spazi)" value={user.phonenumber} onChange={(e) => { setUser({ ...user, phonenumber: e.target.value }) }} />
                 <input placeholder="Email" value={user.email} onChange={(e) => { setUser({ ...user, email: e.target.value }) }} />
                 <label>
                     Liberatorio per l&apos;utilizzo delle foto sui social della parrocchia
