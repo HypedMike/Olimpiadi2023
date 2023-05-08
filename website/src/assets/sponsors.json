@@ -8,5 +8,15 @@
         "name": "Classicum",
         "img": "csc.png",
         "link": "https://www.classicumeventi.com"
+    },
+    {
+        "name": "Zooagricola",
+        "img": "zoo.png",
+        "link": "https://www.zooagricolavecchilucca.it/index.php"
+    },
+    {
+        "name": "Copisteria Boccaccini",
+        "img": "cb.png",
+        "link": "http://www.copisteriaboccaccini.it/"
     }
 ]

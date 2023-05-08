@@ -85,6 +85,11 @@
 
 .sponsor img{
   height: 80px;
+  max-width: 100px;
+}
+
+.sponsor img:hover{
+  cursor: pointer;
 }
 
 .context {
