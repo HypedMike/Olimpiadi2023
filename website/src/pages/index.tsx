@@ -19,6 +19,8 @@ export default function Home() {
   const [year, setYear] = useState(2);
   const [bg, setBg] = useState(Math.floor(Math.random() * 1 + 1));
 
+  const [currentSponsor, setCurrentSponsor] = useState<number>(0);
+
   const [delay_value, setDelay] = useState<string>("0");
 
   useEffect(() => {
@@ -35,6 +37,12 @@ export default function Home() {
     
   }, []);
 
+  useEffect(() => {
+    setInterval(() => {
+      setCurrentSponsor(Math.floor(Math.random() * sponsors.length));
+    }, 4000)
+  }, []);
+
   return (
     <>
       <Head>
@@ -44,9 +52,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></meta>
       </Head>
-      <main className={styles.body} style={{
-        backgroundImage: "url('img/bg/bg" + bg + ".jpg')"
-      }}>
+      <main className={styles.body}>
         <header className={styles.header}>
           <div className={styles.context} >
             <div className={styles.header_content}>
@@ -63,11 +69,7 @@ export default function Home() {
           <div className={styles.sponsorspace_body}>
             <div className={styles.sponsorspace}>
               {
-                sponsors.map((elem, index) => {
-                  return (
-                    <Sponsor key={index} name={elem.name} img={elem.img} link={elem.link} />
-                  )
-                })
+                (currentSponsor >= 0 && sponsors[currentSponsor] != undefined) && <Sponsor name={sponsors[currentSponsor].name} img={sponsors[currentSponsor].img} link={sponsors[currentSponsor].link} />
               }
             </div>
           </div>

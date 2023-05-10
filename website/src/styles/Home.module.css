@@ -282,6 +282,11 @@
     100%{top: 500px;}
   }
 
+  .header{
+    height: 130vh;
+    background-color: #4e54c8;
+  }
+
   .header_content{
     padding: 10px;
     padding-left: 0px;

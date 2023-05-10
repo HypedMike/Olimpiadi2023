@@ -18,5 +18,20 @@
         "name": "Copisteria Boccaccini",
         "img": "cb.png",
         "link": "http://www.copisteriaboccaccini.it/"
+    },
+    {
+        "name": "La Casa del Libro",
+        "img": "cdl.png",
+        "link": "https://www.facebook.com/libriusatilucca/?locale=it_IT"
+    },
+    {
+        "name": "Farmacia Sant'Anna",
+        "img": "fsa.jpg",
+        "link": "https://www.farmasantanna.it/"
+    },
+    {
+        "name": "Forno Ghilardi",
+        "img": "fg.jpg",
+        "link": "https://www.facebook.com/fornoghilardi/?locale=it_IT/"
     }
 ]
