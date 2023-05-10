@@ -50,14 +50,14 @@ function TeamCard(props: teamInterface){
             {props.name + " - " + props.tot}
             <div>
                 {
-                    props.sports.map((element) => {
+                    props.sports.length > 0 && props.sports.map((element) => {
                         return <Sport key={Math.random().toString()} sport={element[0]} points={element[1]} />
                     })
                 }
             </div>
             <div className={style.members}>
                 {
-                    props.members.map((element) => {
+                    props.members.length > 0 && props.members.map((element) => {
                         return (
                             <section key={Math.random().toString()}>{element}</section>
                         )
