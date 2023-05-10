@@ -1,11 +1,15 @@
 .footer{
-    background-color: rgb(131, 255, 172);
-    color: rgb(0, 0, 0);
+    background-color: #3d0c11ff;
+    color: #f46036ff;;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 100px;
+}
+
+.footer a {
+    color: white;
 }
 
 .frame{

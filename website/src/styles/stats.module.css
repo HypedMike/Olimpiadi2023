@@ -9,7 +9,7 @@
 }
 
 .teamcard{
-    background-image: url("https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?cs=srgb&dl=pexels-fwstudio-129731.jpg&fm=jpg");
+    background-color: #f46036ff;
     background-size: cover;
     margin: 10px;
     padding: 30px;
@@ -19,6 +19,7 @@
     text-transform: uppercase;
     text-align: center;
     font-size: large;
+    color: white;
 }
 
 .sports{

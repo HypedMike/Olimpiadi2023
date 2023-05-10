@@ -21,10 +21,15 @@ export default function Stats(){
     const [teams, setTeams] = useState<teamInterface[]>([]);
 
     useEffect(() => {
+        setLoading(true);
         fetch("/api/getstats").then((r) => {
             r.json()
             .then((res) => {
                 setTeams(res);
+                setLoading(false);
+            }).catch((err) => {
+                console.log(err);
+                setLoading(false);
             })
         })
     }, [])
@@ -35,9 +40,9 @@ export default function Stats(){
                 <title>Statistiche</title>
             </Head>
             {
-                teams.length > 0 && teams.map((element) => {
+                loading ? <h1>Loading...</h1> : (teams.length > 0 && teams.map((element) => {
                     return <TeamCard key={element.name} members={element.members} name={element.name} sports={element.sports} tot={element.tot} />
-                })
+                }))
             }
         </div>
     )
@@ -45,8 +50,22 @@ export default function Stats(){
 
 
 function TeamCard(props: teamInterface){
+
+    const convertName = (name: string) => {
+        switch(name.toLowerCase()){
+            case "rossa":
+                return "red";
+            case "blu":
+                return "rgb(43,89,195)";
+            case "gialla":
+                return "rgb(230,194,41)";
+            case "verde":
+                return "rgb(22,143,39)";
+        }
+    }
+
     return (
-        <article className={style.teamcard}>
+        <article className={style.teamcard} style={{backgroundColor: convertName(props.name)}}>
             {props.name + " - " + props.tot}
             <div>
                 {

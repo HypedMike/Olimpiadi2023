@@ -7,8 +7,8 @@
 }
 
 .attention{
- color: rgb(7, 7, 7);
- background-color: rgb(131, 255, 172);
+ color: white;
+ background-color: #f46036ff;
  padding: 30px;
  border-radius: 20px;   
 }
@@ -36,8 +36,8 @@
 }
 
 .form label select {
-    background-color: rgb(131, 255, 172);
-    color: black;
+    background-color: #f46036ff;
+    color: white;
     padding: 10px;
     margin: 10px;
     border: none;
@@ -45,7 +45,7 @@
 }
 
 .form button{
-    background-color: rgb(131, 255, 172);
+    background-color: green;
     color: white;
     margin: 10px;
     padding: 10px;

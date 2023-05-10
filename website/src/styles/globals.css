@@ -1,10 +1,20 @@
-body{
+*{
+    /* CSS HEX */
+    --giants-orange: #f46036ff;
+    --black-bean: #3d0c11ff;
+    --ultra-violet: #52489cff;
+    --sunset: #f6ca83ff;
+    --seashell: #eee2dfff;
+}
+
+body {
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
+    color: var(--giants-orange);
 }
 
-html{
+html {
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
