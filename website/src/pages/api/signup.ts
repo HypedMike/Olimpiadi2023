@@ -6,7 +6,7 @@ const PUBLIC_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
 const PRIVATE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBheWp2Znh4b3d3eWdvbXdhYnpwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY3NzYxMjYxMSwiZXhwIjoxOTkzMTg4NjExfQ.YGjw6og99McGmqjym9M6ekjIYlvwM9ElyLpTKxA-F2k";
 const BASE = "https://payjvfxxowwygomwabzp.supabase.co";
 
-const supabase = createClient(BASE, PRIVATE_KEY);
+const supabase = createClient(process.env.BASE!, process.env.PRIVATE_KEY!);
 
 
 export default function Signup(
@@ -21,7 +21,6 @@ export default function Signup(
 
 
         InsertUser(guest).then((r) => {
-            console.log(r);
             if(!r){
                 res.status(500).json("Something went wrong");
             }else{
@@ -39,16 +38,18 @@ export default function Signup(
 
 
 
-async function InsertUser(guest: Guest){
+async function InsertUser(guest: any){
     
     const { data, error } = await supabase
     .from('guests')
     .insert([
-        { name: guest.name, surname: guest.surname,
+        { 
+            name: guest.name, surname: guest.surname,
             birthday: guest.birthday, email: guest.email, 
             phonenumber: guest.phonenumber, gender: guest.gender,
             sport: guest.sport_def, parent_name: guest.parent_name,
-            parent_surname: guest.parent_surname, parent_phonenumber: guest.parent_phonenumber
+            parent_surname: guest.parent_surname, parent_phonenumber: guest.parent_phonenumber,
+            allergie: guest.allergie
         },
     ]).select()
     if(error){

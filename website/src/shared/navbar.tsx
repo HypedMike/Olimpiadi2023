@@ -32,7 +32,7 @@ export default function Navbar() {
                     <Link href="/">Home</Link>
                     <Link href="/signup">Form</Link>
                     <Link href="/about">About</Link>
-                    <Link href="/#">Statistiche</Link>
+                    <Link href="/stats">Statistiche</Link>
                 </div>}
         </nav>
     )

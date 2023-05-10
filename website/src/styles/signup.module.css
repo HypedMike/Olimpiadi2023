@@ -7,10 +7,14 @@
 }
 
 .attention{
- color: rgb(252, 126, 126);
+ color: rgb(7, 7, 7);
  background-color: rgb(131, 255, 172);
  padding: 30px;
  border-radius: 20px;   
+}
+
+.attention ul {
+    list-style: decimal;
 }
 
 .form{
@@ -18,6 +22,9 @@
     flex-direction: column;
     margin: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .form input{

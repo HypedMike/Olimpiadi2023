@@ -26,26 +26,81 @@ export default function getStats(
 
 async function getStatsWrap(){
     const supabase = createClient(process.env.BASE!, process.env.PRIVATE_KEY!);
-    
-    let sports = await supabase
+  
+    let {data, error} = await supabase
     .from('sports')
     .select('*')
 
-    let teams = await supabase
-    .from('teams')
-    .select('*')
+    interface teamInterface {
+        name: string;
+        sports: [string, number][];
+        tot: number;
+        members: string[];
+    }
 
-    let res: { sport: any; team: any; points: number}[] = [];
+    let res: teamInterface[] = [
+        {
+            name: "rossa",
+            sports: [],
+            tot: 0,
+            members: []
+        },
+        {
+            name: "blu",
+            sports: [],
+            tot: 0,
+            members: []
+        },
+        {
+            name: "gialla",
+            sports: [],
+            tot: 0,
+            members: []
+        },
+        {
+            name: "verde",
+            sports: [],
+            tot: 0,
+            members: []
+        }
+    ];
 
-    //return sports;
+    const addSportToTeam = (sport: string, score: number, team: string) => {
 
-    sports.data!.forEach(element => {
-        res.push({
-            sport: element.name,
-            team: teams.data!.filter((a) => a.id == element.team)[0].name,
-            points: element.points
-        })
-    })
+        var id = 0;
+
+        switch(team){
+            case "rossa":
+                id = 0;
+                break;
+            case "blu":
+                id = 1;
+                break;
+            case "gialla":
+                id = 2;
+                break;
+            case "verde":
+                id = 3;
+                break;
+        }
+
+        res[id].sports.push([sport, score]);
+    }
+
+    data!.forEach(element => {
+        addSportToTeam(element.name, element.rossa, "rossa");
+        addSportToTeam(element.name, element.blu, "blu");
+        addSportToTeam(element.name, element.gialla, "gialla");
+        addSportToTeam(element.name, element.verde, "verde");
+    });
+
+    let guests = await (await fetch(process.env.BASEPATH + "api/getusers/", {
+        method: "POST",
+    })).json();
+
+    guests.filter((element: any) => element.verified).forEach((element: any) => {
+        res[element.team - 1].members.push(element.name + " " + element.surname);
+    });
 
     return res;
 }

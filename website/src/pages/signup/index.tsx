@@ -25,7 +25,8 @@ export default function Signup() {
         file_iscrizione: "",
         file_assicurazione: "",
         legal_photos: false,
-        team: 0
+        team: 0,
+        allergie: ""
     });
 
     const [parent, setParent] = useState({
@@ -62,7 +63,7 @@ export default function Signup() {
             return;
         }
 
-        let guestObj = new Guest(user.name, user.surname, new Date(user.birthday), user.email, user.team, user.phonenumber, user.gender, user.sport_def);
+        let guestObj = new Guest(user.name, user.surname, new Date(user.birthday), user.email, user.team, user.phonenumber, user.gender, user.sport_def, user.allergie);
         if (guestObj.getAge() < 18) {
             if(parent.parent_name == "" || parent.parent_surname == "" || parent.parent_phonenumber == ""){
                 alert("Risulti minorenne. Compila i campi genitori");
@@ -70,6 +71,8 @@ export default function Signup() {
             }
             guestObj.setParent(parent.parent_name, parent.parent_surname, parent.parent_phonenumber);
         }
+
+        console.log(user);
 
         setLoading(true);
 
@@ -93,7 +96,8 @@ export default function Signup() {
                         file_iscrizione: "",
                         file_assicurazione: "",
                         legal_photos: false,
-                        team: 0
+                        team: 0,
+                        allergie: ""
                     })
                     setLoading(false);
                     router.push("/signup/check/" + r[0].id);
@@ -111,17 +115,29 @@ export default function Signup() {
                 <title>Iscrizione</title>
             </Head>
             <h1>Iscriviti ora all&apos;edizione 2023 delle Olimpiadi di San Donato!</h1>
-            <div className={style.form}>
-                <div className={style.attention}>
-                    Scaricare e compilare il modulo assicurativo per completare l&apos;iscrizione. Dovrà essere inviato <b>compilato</b> all&apos;indirizzo email <a href="mailto:olimpiadi.levele@gmail.com">olimpiadi.levele@gmail.com</a>
-                    <br></br>
-                    <br></br>
-                    <a href="/docs/modulo_assicurativo.pdf">modulo_assicurativo.pdf</a>
+            <div className={style.attention}>
+                    <h2>Segui questa semplice procedura step by step per iscriverti!</h2>
+
+                    <ul>
+                        <li>
+                            Scarica e compila il modulo iscrizione PDF scaricabile tramite <a href="/docs/modulo_assicurativo.pdf">questo link</a>
+                        </li>
+                        <li>
+                            Invia il modulo appena compilato al seguente indirizzo email <a href="mailto:olimpiadi.levele@gmail.com">olimpiadi.levele@gmail.com</a>
+                        </li>
+                        <li>
+                            Compila il questionario online in fondo a questa pagina e premi invia. Aspetta la pagina di approvazione del processo.
+                        </li>
+                    </ul>
+
+                    <h2>Tutti gli step precedenti sono <b>obbligatori</b> per potersi iscrivere! Per qualsiasi domanda potete semrpe rivolgervi ad uno dei contatti che trovate a pié di pagina</h2>
+                    
                     <h3>
                         L&apos;iscrizione online (sottostante) ed invio del PDF DOVRANNO essere inviati ENTRO E NON OLTRE la data di scadenza delle iscrizioni
                     </h3>
-                    Nella schermata successiva all&apos;iscrizione potrete tenere traccia del processo di iscrizione
                 </div>
+            <div className={style.form}>
+ 
                 <input value={user.name} onChange={(e) => { setUser({ ...user, name: e.target.value }) }} placeholder="Nome" />
                 <input value={user.surname} onChange={(e) => { setUser({ ...user, surname: e.target.value }) }} placeholder="Cognome" />
 
@@ -174,16 +190,25 @@ export default function Signup() {
                     <input placeholder="Data di nascita" type={"date"} value={user.birthday} onChange={(e) => { setUser({ ...user, birthday: e.target.value }) }} />
                 </label>
                 {
-                    underage &&
+                    underage ?
                     <div className={style.underageform}>
                         <h3>Modulo per minorenni</h3>
                         <input value={parent.parent_name} onChange={(e) => { setParent({ ...parent, parent_name: e.target.value }) }} placeholder="Nome genitore" />
                         <input value={parent.parent_surname} onChange={(e) => { setParent({ ...parent, parent_surname: e.target.value }) }} placeholder="Cognome genitore" />
                         <input type={"number"} value={parent.parent_phonenumber} onChange={(e) => { setParent({ ...parent, parent_phonenumber: e.target.value }) }} placeholder="Numero di cellulare (senza prefisso '+39' e senza spazi)" />
+                        <input placeholder="Email" value={user.email} onChange={(e) => { setUser({ ...user, email: e.target.value }) }} />
+                    </div>
+
+                    :
+
+                    <div className={style.underageform}>
+                        <input type={"number"} placeholder="Numero di cellulare (senza prefisso '+39' e senza spazi)" value={user.phonenumber} onChange={(e) => { setUser({ ...user, phonenumber: e.target.value }) }} />
+                        <input placeholder="Email" value={user.email} onChange={(e) => { setUser({ ...user, email: e.target.value }) }} />
                     </div>
                 }
-                <input type={"number"} placeholder="Numero di cellulare (senza prefisso '+39' e senza spazi)" value={user.phonenumber} onChange={(e) => { setUser({ ...user, phonenumber: e.target.value }) }} />
-                <input placeholder="Email" value={user.email} onChange={(e) => { setUser({ ...user, email: e.target.value }) }} />
+
+                <textarea placeholder="Segnala qui allergie o situazioni particolari (opzionale)" rows={5} cols={50} maxLength={500} value={user.allergie} onChange={(e) => { setUser({ ...user, allergie: e.target.value }) }} />
+                
                 <label>
                     Liberatorio per l&apos;utilizzo delle foto sui social della parrocchia
                     <input checked={user.legal_photos} type={"checkbox"} onChange={(e) => { setUser({ ...user, legal_photos: e.target.checked }) }} />

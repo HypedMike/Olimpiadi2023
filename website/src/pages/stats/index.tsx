@@ -1,55 +1,42 @@
 import { useEffect, useState } from "react"
 import style from "../../styles/stats.module.css";
+import Head from "next/head";
 
 declare interface sportProps {
     sport: string;
-    team: string;
     points: number;
 }
 
+interface teamInterface {
+    name: string;
+    sports: [string, number][];
+    tot: number;
+    members: string[];
+}
+
+
 export default function Stats(){
 
-    const [data, setData] = useState<sportProps[]>([]);
-
     const [loading, setLoading] = useState<boolean>(true);
-    const [teams, setTeams] = useState<string[]>([])
+    const [teams, setTeams] = useState<teamInterface[]>([]);
 
     useEffect(() => {
         fetch("/api/getstats").then((r) => {
             r.json()
             .then((res) => {
-                console.log(res);
-                setData(res);
-                res.forEach((element: sportProps) => {
-                    if(!teams.includes(element.team)){
-                        let temp = teams;
-                        temp.push(element.team);
-                        setTeams(temp);
-                    }
-                });
-                setLoading(false);
-            }).catch((err) => {
-                setLoading(false);
+                setTeams(res);
             })
         })
     }, [])
 
     return (
         <div className={style.body}>
+            <Head>
+                <title>Statistiche</title>
+            </Head>
             {
-                teams.sort((a, b) => {
-                    return data.filter((c) => c.team == b)[0].points - data.filter((c) => c.team == a)[0].points
-                }).map((elem, ind) => {
-                    return (
-                    <article key={ind*10}>
-                        <h1>{elem}</h1>
-                        {data.filter((a) => a.team == elem).map((element, index) => {
-                            return (
-                                <Sport key={index} sport={element.sport} team={element.team} points={element.points} />
-                            )
-                        })}
-                    </article>
-                )
+                teams.length > 0 && teams.map((element) => {
+                    return <TeamCard key={element.name} members={element.members} name={element.name} sports={element.sports} tot={element.tot} />
                 })
             }
         </div>
@@ -57,10 +44,34 @@ export default function Stats(){
 }
 
 
+function TeamCard(props: teamInterface){
+    return (
+        <article className={style.teamcard}>
+            {props.name + " - " + props.tot}
+            <div>
+                {
+                    props.sports.map((element) => {
+                        return <Sport key={Math.random().toString()} sport={element[0]} points={element[1]} />
+                    })
+                }
+            </div>
+            <div className={style.members}>
+                {
+                    props.members.map((element) => {
+                        return (
+                            <section key={Math.random().toString()}>{element}</section>
+                        )
+                    })
+                }
+            </div>
+        </article>
+    )
+}
+
 
 function Sport(props: sportProps){
     return (
-        <div>
+        <div className={style.sports}>
             <section>{props.sport}</section>
             <section>{props.points}</section>
         </div>

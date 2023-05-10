@@ -1,27 +1,45 @@
 .body{
     min-height: 100vh;
-    background-color: aqua;
+    background-color: white;
     background-size: cover;
     background-repeat: repeat;
-    padding-top: 100px;
+    padding-top: 150px;
     display: flex;
     flex-direction: column;
 }
 
-.body article{
+.teamcard{
     background-image: url("https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?cs=srgb&dl=pexels-fwstudio-129731.jpg&fm=jpg");
     background-size: cover;
     margin: 10px;
     padding: 30px;
     padding-top: 10px;
     border-radius: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: large;
 }
 
-.body article div{
+.sports{
     border: solid white 2px;
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 20px;
     margin: 10px;
+    text-align: left;
+    font-size: medium;
+}
+
+.members{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.members section{
+    border: solid 1px white;
+    padding: 10px;
+    border-radius: 10px;
 }

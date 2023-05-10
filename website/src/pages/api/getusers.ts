@@ -1,8 +1,7 @@
 import { Guest } from "@/util/users";
 import { createClient } from "@supabase/supabase-js";
 import { NextApiRequest, NextApiResponse } from "next";
-import { BASE, PRIVATE_KEY } from "./env";
-
+    
 
 export default function Signup(
     req: NextApiRequest,
@@ -25,6 +24,12 @@ export default function Signup(
     }
 }
 
+function calculateAge(birthday: Date) { // birthday is a date
+    var ageDifMs = Date.now() - birthday.getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
 async function getUsers(){
     const supabase = createClient(process.env.BASE!, process.env.PRIVATE_KEY!);
     
@@ -32,21 +37,24 @@ async function getUsers(){
     .from('guests')
     .select('*')
 
-    let guests: Guest[] = [];
+    interface GuestPublicInterface{
+        name: string,
+        surname: string,
+        team: number,
+        age: number,
+        verified: boolean
+    };
+
+    let guests: GuestPublicInterface[] = [];
 
     data!.forEach(element => {
-        guests.push(
-            new Guest(
-                element.name,
-                element.surname,
-                new Date(element.birthday),
-                element.email,
-                element.team,
-                element.phonenumber,
-                element.gender,
-                element.sport
-            )
-        )
+        guests.push({
+            name: element.name,
+            surname: element.surname.charAt(0),
+            team: element.team,
+            age: calculateAge(new Date(element.birthday)),
+            verified: element.verified
+        })
     });
 
 
