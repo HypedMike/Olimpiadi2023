@@ -94,7 +94,7 @@ async function getStatsWrap(){
         addSportToTeam(element.name, element.verde, "verde");
     });
 
-    let guests = await (await fetch(process.env.BASEPATH + "api/getusers/", {
+    let guests = await (await fetch(process.env.BASEPATH! + "api/getusers/", {
         method: "POST",
     })).json();
 
