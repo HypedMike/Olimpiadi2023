@@ -76,16 +76,16 @@
   background-color: black;
   color: white;
   padding: 30px;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   margin: 10px;
   border-radius: 30px;
   box-shadow: #4e54c8 5px 5px 0px;
 }
 
 .sponsor img{
-  height: 80px;
-  max-width: 100px;
+  height: 200px;
+  max-width: 200px;
 }
 
 .sponsor img:hover{

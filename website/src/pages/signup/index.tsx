@@ -4,7 +4,6 @@ import style from "../../styles/signup.module.css";
 import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import ReCAPTCHA from "react-google-recaptcha";
 import { CAPTCHAPUBLICKEY } from "@/publickey";
 
 export default function Signup() {
@@ -130,7 +129,7 @@ export default function Signup() {
                         </li>
                     </ul>
 
-                    <h2>Tutti gli step precedenti sono <b>obbligatori</b> per potersi iscrivere! Per qualsiasi domanda potete semrpe rivolgervi ad uno dei contatti che trovate a pié di pagina</h2>
+                    <h2>Tutti gli step precedenti sono <b>obbligatori</b> per potersi iscrivere! Per qualsiasi domanda potete sempre rivolgervi ad uno dei contatti che trovate a pié di pagina</h2>
                     
                     <h3>
                         L&apos;iscrizione online (sottostante) ed invio del PDF DOVRANNO essere inviati ENTRO E NON OLTRE la data di scadenza delle iscrizioni

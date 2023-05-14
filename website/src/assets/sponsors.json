@@ -33,5 +33,25 @@
         "name": "Forno Ghilardi",
         "img": "fg.jpg",
         "link": "https://www.facebook.com/fornoghilardi/?locale=it_IT/"
+    },
+    {
+        "name": "Barberia 900",
+        "img": "b900.png",
+        "link": "https://www.facebook.com/barberia900/?locale=it_IT"
+    },
+    {
+        "name": "Centro Tennis Sport Le Vele",
+        "img": "ctslv.jpg",
+        "link": "https://www.facebook.com/tennislevelesandonato/?locale=it_IT"
+    },
+    {
+        "name": "Alberto e Salvo parrucchiere",
+        "img": "aesp.png",
+        "link": "https://www.facebook.com/Alberto.Salvo.Parrucchieri/?locale=it_IT"
+    },
+    {
+        "name": "Pizzarte",
+        "img": "pa.png",
+        "link": "https://www.facebook.com/PizzArte501/?locale=it_IT"
     }
 ]

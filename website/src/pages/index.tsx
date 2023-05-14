@@ -4,7 +4,6 @@ import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import sponsors from "../assets/sponsors.json";
-import { imageConfigDefault } from 'next/dist/shared/lib/image-config'
 import Image from 'next/image'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -16,7 +15,7 @@ function addDays(date: Date, days: number) {
 
 export default function Home() {
 
-  const [year, setYear] = useState(2);
+  const [year, setYear] = useState(2000);
   const [bg, setBg] = useState(Math.floor(Math.random() * 1 + 1));
 
   const [currentSponsor, setCurrentSponsor] = useState<number>(0);
@@ -24,10 +23,10 @@ export default function Home() {
   const [delay_value, setDelay] = useState<string>("0");
 
   useEffect(() => {
-    let y = 2;
+    let y = 2000;
     const interval = setInterval(() => {
       if (y < 2023) {
-        y *= 1.15;
+        y += 1;
         setYear(Math.round(y));
       } else {
         setYear(2023);
