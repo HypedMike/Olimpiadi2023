@@ -92,6 +92,13 @@ export default function Home() {
             </ul>
           </div >
         </header>
+        <div>
+          <h1>Ma cosa succede alle olimpiadi?</h1>
+          <h3>Lasciamo che siano le immagini a parlare!</h3>
+          <iframe width="300" height="200" src="https://www.youtube.com/embed/ifVJXCtBwFQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+          <iframe width="300" height="200" src="https://www.youtube.com/embed/SD5iZh8fZSs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+          <iframe width="300" height="200" src="https://www.youtube.com/embed/XnoNfGmbRLE" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+        </div>
       </main>
     </>
   )

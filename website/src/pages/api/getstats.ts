@@ -26,9 +26,6 @@ export default function getStats(
 async function getStatsWrap(){
     const supabase = createClient(process.env.BASE!, process.env.PRIVATE_KEY!);
 
-    console.log(process.env.BASE);
-    console.log(process.env.PRIVATE_KEY);
-  
     let {data, error} = await supabase
     .from('sports')
     .select('*')
