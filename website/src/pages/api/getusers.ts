@@ -47,15 +47,17 @@ async function getUsers(){
 
     let guests: GuestPublicInterface[] = [];
 
-    data!.forEach(element => {
-        guests.push({
-            name: element.name,
-            surname: element.surname.charAt(0),
-            team: element.team,
-            age: calculateAge(new Date(element.birthday)),
-            verified: element.verified
-        })
-    });
+    if(data != null){
+        data!.forEach(element => {
+            guests.push({
+                name: element.name,
+                surname: element.surname.charAt(0),
+                team: element.team,
+                age: calculateAge(new Date(element.birthday)),
+                verified: element.verified
+            })
+        });
+    }
 
 
     return guests;

@@ -21,7 +21,13 @@ export default function Navbar() {
                 if (window.innerWidth < 800) {
                     setVis(!vis)
                 }
-            }}><Image alt="Logo" height={80} width={80} src="/img/logo.png" /></div>
+            }}>
+                <div>
+                <Image alt="Logo" height={80} width={80} src="/img/logo.png" />
+                <Image alt="arrow" height={50} width={50} src="/img/down-arrow.png" className={style.arrow} />
+                </div>
+                
+            </div>
             {
                 vis &&
                 <div className={style.buttons} onClick={() => {

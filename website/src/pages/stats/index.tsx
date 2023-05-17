@@ -23,14 +23,18 @@ export default function Stats(){
     useEffect(() => {
         setLoading(true);
         fetch("/api/getstats").then((r) => {
-            r.json()
-            .then((res) => {
-                setTeams(res);
-                setLoading(false);
-            }).catch((err) => {
-                console.log(err);
-                setLoading(false);
-            })
+            if(r.status !== 200){
+                alert("Errore nella richiesta");
+            }else{
+                r.json()
+                .then((res) => {
+                    setTeams(res);
+                    setLoading(false);
+                }).catch((err) => {
+                    console.log(err);
+                    setLoading(false);
+                })
+            }
         })
     }, [])
 

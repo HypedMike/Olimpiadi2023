@@ -98,11 +98,11 @@ export default function Signup() {
                         team: 0,
                         allergie: ""
                     })
-                    setLoading(false);
                     router.push("/signup/check/" + r[0].id);
                 }
                 else if(r == -2){
                     alert("Utente già presente");
+                    setLoading(false);
                 }
             }).catch((e) => { setLoading(false) })
         })

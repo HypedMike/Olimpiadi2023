@@ -8,7 +8,6 @@ export default function getStats(
 ){
     if(req.method == "GET"){
         //const body = JSON.parse(req.body);
-        
         getStatsWrap().then((r) => {
             console.log("about to send " + r);
             res.status(200).json(r!);
@@ -20,12 +19,15 @@ export default function getStats(
 
 
         
-        res.status(200).json("POST requests are not accepted");
+        res.status(400).json("POST requests are not accepted");
     }
 }
 
 async function getStatsWrap(){
     const supabase = createClient(process.env.BASE!, process.env.PRIVATE_KEY!);
+
+    console.log(process.env.BASE);
+    console.log(process.env.PRIVATE_KEY);
   
     let {data, error} = await supabase
     .from('sports')
@@ -87,12 +89,15 @@ async function getStatsWrap(){
         res[id].sports.push([sport, score]);
     }
 
-    data!.forEach(element => {
-        addSportToTeam(element.name, element.rossa, "rossa");
-        addSportToTeam(element.name, element.blu, "blu");
-        addSportToTeam(element.name, element.gialla, "gialla");
-        addSportToTeam(element.name, element.verde, "verde");
-    });
+    if(data != null){
+        data!.forEach(element => {
+            addSportToTeam(element.name, element.rossa, "rossa");
+            addSportToTeam(element.name, element.blu, "blu");
+            addSportToTeam(element.name, element.gialla, "gialla");
+            addSportToTeam(element.name, element.verde, "verde");
+        });
+    }
+    
 
     let guests = await (await fetch(process.env.BASEPATH! + "api/getusers/", {
         method: "POST",
