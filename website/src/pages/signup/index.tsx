@@ -114,27 +114,6 @@ export default function Signup() {
                 <title>Iscrizione</title>
             </Head>
             <h1>Iscriviti ora all&apos;edizione 2023 delle Olimpiadi di San Donato!</h1>
-            <div className={style.attention}>
-                    <h2>Segui questa semplice procedura step by step per iscriverti!</h2>
-
-                    <ul>
-                        <li>
-                            Scarica e compila il modulo iscrizione PDF scaricabile tramite <a href="/docs/modulo_assicurativo.pdf">questo link</a>
-                        </li>
-                        <li>
-                            Invia il modulo appena compilato al seguente indirizzo email <a href="mailto:olimpiadi.levele@gmail.com">olimpiadi.levele@gmail.com</a>
-                        </li>
-                        <li>
-                            Compila il questionario online in fondo a questa pagina e premi invia. Aspetta la pagina di approvazione del processo.
-                        </li>
-                    </ul>
-
-                    <h2>Tutti gli step precedenti sono <b>obbligatori</b> per potersi iscrivere! Per qualsiasi domanda potete sempre rivolgervi ad uno dei contatti che trovate a pié di pagina</h2>
-                    
-                    <h3>
-                        L&apos;iscrizione online (sottostante) ed invio del PDF DOVRANNO essere inviati ENTRO E NON OLTRE la data di scadenza delle iscrizioni
-                    </h3>
-                </div>
             <div className={style.form}>
  
                 <input value={user.name} onChange={(e) => { setUser({ ...user, name: e.target.value }) }} placeholder="Nome" />
@@ -209,7 +188,7 @@ export default function Signup() {
                 <textarea placeholder="Segnala qui allergie o situazioni particolari (opzionale)" rows={5} cols={50} maxLength={500} value={user.allergie} onChange={(e) => { setUser({ ...user, allergie: e.target.value }) }} />
                 
                 <label>
-                    Liberatorio per l&apos;utilizzo delle foto sui social della parrocchia
+                    Liberatorio per l&apos;utilizzo delle foto e video sui social della parrocchia
                     <input checked={user.legal_photos} type={"checkbox"} onChange={(e) => { setUser({ ...user, legal_photos: e.target.checked }) }} />
                 </label>
                 {
