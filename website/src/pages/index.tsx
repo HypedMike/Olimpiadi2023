@@ -33,7 +33,7 @@ export default function Home() {
         clearInterval(interval);
       }
     }, 100);
-    
+
   }, []);
 
   useEffect(() => {
@@ -55,7 +55,15 @@ export default function Home() {
         <header className={styles.header}>
           <div className={styles.context} >
             <div className={styles.header_content}>
-              <Image width={300} height={300} alt='logo' src='/img/logo.png' />
+              <div className={styles.alliance}>
+                <Image width={300} height={300} alt='logo' src='/img/logo.png' />
+                <div>🤝</div>
+                <div className={styles.sponsorspace}>
+                  {
+                    (currentSponsor >= 0 && sponsors[currentSponsor] != undefined) && <Sponsor name={sponsors[currentSponsor].name} img={sponsors[currentSponsor].img} link={sponsors[currentSponsor].link} />
+                  }
+                </div>
+              </div>
               <h2>
                 {year}
               </h2>
@@ -64,14 +72,10 @@ export default function Home() {
                 <Link href={"/about"}>SCOPRI DI PIÙ</Link>
               </div>
             </div>
-            
-          <div className={styles.sponsorspace_body}>
-            <div className={styles.sponsorspace}>
-              {
-                (currentSponsor >= 0 && sponsors[currentSponsor] != undefined) && <Sponsor name={sponsors[currentSponsor].name} img={sponsors[currentSponsor].img} link={sponsors[currentSponsor].link} />
-              }
+
+            <div className={styles.sponsorspace_body}>
+
             </div>
-          </div>
           </div>
 
           <div className={styles.area} >
