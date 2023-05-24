@@ -59,6 +59,5 @@ async function getUsers(){
         });
     }
 
-
     return guests;
 }

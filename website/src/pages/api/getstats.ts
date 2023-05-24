@@ -15,10 +15,7 @@ export default function getStats(
             res.status(400).json("Something went wrong " + e);
         })
         
-    }else{
-
-
-        
+    }else{        
         res.status(400).json("POST requests are not accepted");
     }
 }
@@ -101,8 +98,9 @@ async function getStatsWrap(){
     })).json();
 
     guests.filter((element: any) => element.verified).forEach((element: any) => {
-        res[element.team - 1].members.push(element.name + " " + element.surname);
+        res[(element.team == null ? Math.floor(Math.random() * 3 + 1) : element.team) - 1].members.push(element.name + " " + element.surname);
     });
+
 
     return res;
 }

@@ -24,7 +24,9 @@ export default function Stats(){
         setLoading(true);
         fetch("/api/getstats").then((r) => {
             if(r.status !== 200){
-                alert("Errore nella richiesta");
+                r.json().then((result) => {
+                    alert("Errore nella richiesta: " + result);
+                })
             }else{
                 r.json()
                 .then((res) => {
@@ -44,9 +46,14 @@ export default function Stats(){
                 <title>Statistiche</title>
             </Head>
             {
-                loading ? <h1>Loading...</h1> : (teams.length > 0 && teams.map((element) => {
+                loading ? <h1>Loading...</h1> : 
+                
+                <>
+                <h2 style={{margin: "10px"}}>Il nostro algoritmo sta calcolando ancora calconda un'equa distribuzione delle squadre. Le combinazioni di giocatori possono ancora cambiare!</h2>
+                {(teams.length > 0 && teams.map((element) => {
                     return <TeamCard key={element.name} members={element.members} name={element.name} sports={element.sports} tot={element.tot} />
-                }))
+                }))}
+                </>
             }
         </div>
     )
