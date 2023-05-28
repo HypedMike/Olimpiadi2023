@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import sponsors from "../assets/sponsors.json";
 import Image from 'next/image'
+import { METHODS } from 'http'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +21,30 @@ export default function Home() {
 
   const [currentSponsor, setCurrentSponsor] = useState<number>(0);
 
+  const [currentSubs, setCurrentSubs] = useState<number>(-1);
+
   const [delay_value, setDelay] = useState<string>("0");
+
+  const getCurrentSubs = async () => {
+    fetch("/api/getusers", {
+      method: "POST"
+    }).then((r) => {
+      if (r.status !== 200) {
+        r.json().then((result) => {
+          alert("Errore nella richiesta: " + result);
+        })
+      } else {
+        r.json()
+          .then((res) => {
+            if(res.length > 0){
+              setCurrentSubs(res.length);
+            }
+          }).catch((err) => {
+            console.log(err);
+          })
+      }
+    })
+  }
 
   useEffect(() => {
     let y = 2000;
@@ -33,7 +57,7 @@ export default function Home() {
         clearInterval(interval);
       }
     }, 100);
-
+    getCurrentSubs();
   }, []);
 
   useEffect(() => {
@@ -67,8 +91,9 @@ export default function Home() {
               <h2>
                 {year}
               </h2>
+              <progress value={(currentSubs * 2) % 80} max={80} />
               <div>
-                <Link href={"/signup"}>ISCRIVITI</Link>
+                <Link href={"/signup"}>ISCRIVITI - {currentSubs == -1 ? "Loading" : (currentSubs * 2) % 80 + "/80"}</Link>
                 <Link href={"/about"}>SCOPRI DI PIÙ</Link>
               </div>
             </div>

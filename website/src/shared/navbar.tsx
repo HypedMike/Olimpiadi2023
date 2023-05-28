@@ -36,7 +36,7 @@ export default function Navbar() {
                     }
                 }}>
                     <Link href="/">Home</Link>
-                    <Link href="/signup">Form</Link>
+                    <Link href="/signup">Iscrizione</Link>
                     <Link href="/about">About</Link>
                     <Link href="/stats">Statistiche</Link>
                 </div>}

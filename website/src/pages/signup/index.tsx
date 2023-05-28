@@ -114,6 +114,7 @@ export default function Signup() {
                 <title>Iscrizione</title>
             </Head>
             <h1>Iscriviti ora all&apos;edizione 2023 delle Olimpiadi di San Donato!</h1>
+            <h2>Termine iscrizioni: 17 luglio alle 13:00</h2>
             <div className={style.form}>
  
                 <input value={user.name} onChange={(e) => { setUser({ ...user, name: e.target.value }) }} placeholder="Nome" />
