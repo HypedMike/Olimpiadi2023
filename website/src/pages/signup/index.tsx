@@ -189,7 +189,7 @@ export default function Signup() {
                 <textarea placeholder="Segnala qui allergie o situazioni particolari (opzionale)" rows={5} cols={50} maxLength={500} value={user.allergie} onChange={(e) => { setUser({ ...user, allergie: e.target.value }) }} />
                 
                 <label>
-                    Liberatorio per l&apos;utilizzo delle foto e video sui social della parrocchia
+                    <a href="\docs\modulo_assicurativo.pdf">Termini e condizioni</a> e liberatoria per l&apos;utilizzo delle foto e video sui social della parrocchia
                     <input checked={user.legal_photos} type={"checkbox"} onChange={(e) => { setUser({ ...user, legal_photos: e.target.checked }) }} />
                 </label>
                 {
