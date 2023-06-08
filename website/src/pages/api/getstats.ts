@@ -98,7 +98,7 @@ async function getStatsWrap(){
     })).json();
 
     guests.filter((element: any) => element.verified).forEach((element: any) => {
-        res[(element.team == null ? Math.floor(Math.random() * 3 + 1) : element.team) - 1].members.push(element.name + " " + element.surname);
+        res[(element.team == null ? Math.floor(Math.random() * 4 + 1) : element.team) - 1].members.push(element.name + " " + element.surname);
     });
 
 
