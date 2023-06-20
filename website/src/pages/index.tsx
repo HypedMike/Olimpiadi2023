@@ -91,7 +91,11 @@ export default function Home() {
               <h2>
                 {year}
               </h2>
-              <progress value={(currentSubs * 2) % 80} max={80} />
+              {
+                false
+                &&
+                <progress value={(currentSubs * 2) % 80} max={80} />
+              }
               <div>
                 <Link href={"/signup"}>ISCRIVITI - {currentSubs == -1 ? "Loading" : (currentSubs * 2) % 80 + "/80"}</Link>
                 <Link href={"/about"}>SCOPRI DI PIÙ</Link>
