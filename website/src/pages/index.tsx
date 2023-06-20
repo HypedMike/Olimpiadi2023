@@ -97,7 +97,7 @@ export default function Home() {
                 <progress value={(currentSubs * 2) % 80} max={80} />
               }
               <div>
-                <Link href={"/signup"}>ISCRIVITI - {currentSubs == -1 ? "Loading" : (currentSubs * 2) % 80 + "/80"}</Link>
+                <Link href={"/signup"}>ISCRIVITI - {currentSubs == -1 ? "Loading" : currentSubs + "/80"}</Link>
                 <Link href={"/about"}>SCOPRI DI PIÙ</Link>
               </div>
             </div>
