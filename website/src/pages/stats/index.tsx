@@ -49,7 +49,6 @@ export default function Stats(){
                 loading ? <h1>Loading...</h1> : 
                 
                 <>
-                <h2 style={{margin: "10px"}}>Il nostro algoritmo sta ancora calcolando un'equa distribuzione delle squadre. Le combinazioni di giocatori possono ancora cambiare!</h2>
                 {(teams.length > 0 && teams.map((element) => {
                     return <TeamCard key={element.name} members={element.members} name={element.name} sports={element.sports} tot={element.tot} />
                 }))}
@@ -77,7 +76,7 @@ function TeamCard(props: teamInterface){
 
     return (
         <article className={style.teamcard} style={{backgroundColor: convertName(props.name)}}>
-            {props.name + " - " + props.tot}
+            {props.name}
             <div>
                 {
                     props.sports.length > 0 && props.sports.map((element) => {

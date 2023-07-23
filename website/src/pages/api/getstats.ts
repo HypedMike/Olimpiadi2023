@@ -36,6 +36,12 @@ async function getStatsWrap(){
 
     let res: teamInterface[] = [
         {
+            name: "verde",
+            sports: [],
+            tot: 0,
+            members: []
+        },
+        {
             name: "rossa",
             sports: [],
             tot: 0,
@@ -49,12 +55,6 @@ async function getStatsWrap(){
         },
         {
             name: "gialla",
-            sports: [],
-            tot: 0,
-            members: []
-        },
-        {
-            name: "verde",
             sports: [],
             tot: 0,
             members: []
@@ -85,10 +85,10 @@ async function getStatsWrap(){
 
     if(data != null){
         data!.forEach(element => {
-            addSportToTeam(element.name, element.rossa, "rossa");
-            addSportToTeam(element.name, element.blu, "blu");
-            addSportToTeam(element.name, element.gialla, "gialla");
-            addSportToTeam(element.name, element.verde, "verde");
+            addSportToTeam(element.name, element.rossa, "verde");
+            addSportToTeam(element.name, element.blu, "rossa");
+            addSportToTeam(element.name, element.gialla, "blu");
+            addSportToTeam(element.name, element.verde, "gialla");
         });
     }
     
@@ -98,7 +98,8 @@ async function getStatsWrap(){
     })).json();
 
     guests.filter((element: any) => element.verified).forEach((element: any) => {
-        res[(element.team == null ? Math.floor(Math.random() * 4 + 1) : element.team) - 1].members.push(element.name + " " + element.surname);
+        res[(element.team == null ? Math.floor(Math.random() * 4) : element.team - 1)].members.push(
+            element.name + " " + element.surname);
     });
 
 
