@@ -67,16 +67,16 @@ async function getStatsWrap(){
 
         switch(team){
             case "rossa":
-                id = 0;
-                break;
-            case "blu":
                 id = 1;
                 break;
-            case "gialla":
+            case "blu":
                 id = 2;
                 break;
-            case "verde":
+            case "gialla":
                 id = 3;
+                break;
+            case "verde":
+                id = 0;
                 break;
         }
 
@@ -85,10 +85,10 @@ async function getStatsWrap(){
 
     if(data != null){
         data!.forEach(element => {
-            addSportToTeam(element.name, element.rossa, "verde");
-            addSportToTeam(element.name, element.blu, "rossa");
-            addSportToTeam(element.name, element.gialla, "blu");
-            addSportToTeam(element.name, element.verde, "gialla");
+            addSportToTeam(element.name, element.verde, "verde");
+            addSportToTeam(element.name, element.rossa, "rossa");
+            addSportToTeam(element.name, element.blu, "blu");
+            addSportToTeam(element.name, element.gialla, "gialla");
         });
     }
     
