@@ -74,9 +74,24 @@ function TeamCard(props: teamInterface){
         }
     }
 
+    const totalPoints = () => {
+
+        if(props.sports.length == undefined || props.sports.length < 1){
+            return 0;
+        }
+
+        var res: number = 0;
+
+        for (let index = 0; index < props.sports.length; index++) {
+            res += props.sports[index][1];
+        }
+
+        return res;
+    }
+
     return (
         <article className={style.teamcard} style={{backgroundColor: convertName(props.name)}}>
-            {props.name}
+            {props.name} - {totalPoints()}
             <div>
                 {
                     props.sports.length > 0 && props.sports.map((element) => {
